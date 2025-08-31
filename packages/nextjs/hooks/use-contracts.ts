@@ -33,6 +33,28 @@ export function useAttendaToken() {
     return balanceData ? formatEther(balanceData) : "0";
   };
 
+  const mint = (to: `0x${string}`, amount: string) => {
+    if (!ATTENDA_TOKEN_ADDRESS || !ATTENDA_TOKEN_ABI) return;
+
+    writeContract({
+      address: ATTENDA_TOKEN_ADDRESS,
+      abi: ATTENDA_TOKEN_ABI,
+      functionName: "mint",
+      args: [to, parseEther(amount)],
+    });
+  };
+
+  const mintForTesting = (amount: string) => {
+    if (!ATTENDA_TOKEN_ADDRESS || !ATTENDA_TOKEN_ABI) return;
+
+    writeContract({
+      address: ATTENDA_TOKEN_ADDRESS,
+      abi: ATTENDA_TOKEN_ABI,
+      functionName: "mintForTesting",
+      args: [parseEther(amount)],
+    });
+  };
+
   const transfer = (to: `0x${string}`, amount: string) => {
     if (!ATTENDA_TOKEN_ADDRESS || !ATTENDA_TOKEN_ABI) return;
 
@@ -57,6 +79,8 @@ export function useAttendaToken() {
 
   return {
     getBalance,
+    mint,
+    mintForTesting,
     transfer,
     approve,
     refetchBalance,

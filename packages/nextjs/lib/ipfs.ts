@@ -36,15 +36,9 @@ export class IPFSService {
     formData.append("pinataOptions", options);
 
     try {
-      // Simulate progress for demo purposes
+      // Start progress tracking
       if (onProgress) {
-        const interval = setInterval(() => {
-          const progress = Math.min(100, Math.random() * 100);
-          onProgress(progress);
-          if (progress >= 100) {
-            clearInterval(interval);
-          }
-        }, 200);
+        onProgress(10); // Start at 10%
       }
 
       const response = await fetch("https://api.pinata.cloud/pinning/pinFileToIPFS", {
@@ -59,7 +53,17 @@ export class IPFSService {
         throw new Error(`IPFS upload failed: ${response.statusText}`);
       }
 
+      // Update progress to 90% when response is received
+      if (onProgress) {
+        onProgress(90);
+      }
+
       const result = await response.json();
+
+      // Complete progress
+      if (onProgress) {
+        onProgress(100);
+      }
 
       return {
         hash: result.IpfsHash,
@@ -68,12 +72,7 @@ export class IPFSService {
       };
     } catch (error) {
       console.error("IPFS upload error:", error);
-      // Return mock data for demo purposes
-      return {
-        hash: "QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG",
-        url: `https://gateway.pinata.cloud/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG`,
-        size: file.size,
-      };
+      throw error; // Re-throw the error instead of returning mock data
     }
   }
 

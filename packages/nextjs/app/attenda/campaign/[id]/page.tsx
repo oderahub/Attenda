@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
+import { ProofSubmission } from "@/components/ProofSubmission";
 import {
   Eye,
   Clock,
@@ -77,7 +78,7 @@ export default function CampaignViewer() {
   const [isPaused, setIsPaused] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [showProofSubmission, setShowProofSubmission] = useState(false);
+
 
   const [attentionMetrics, setAttentionMetrics] = useState<AttentionMetrics>({
     timeSpent: 0,
@@ -190,11 +191,7 @@ export default function CampaignViewer() {
     }
   };
 
-  const handleSubmitProof = () => {
-    // Simulate proof submission
-    alert("Proof of attention submitted successfully! You&apos;ve earned " + campaign?.reward);
-    router.push("/attenda");
-  };
+
 
   const progress = campaign ? (timeElapsed / (campaign.duration * 60)) * 100 : 0;
   const remainingTime = campaign ? Math.max(0, campaign.duration * 60 - timeElapsed) : 0;
@@ -263,8 +260,8 @@ export default function CampaignViewer() {
                           You&apos;ve successfully completed this campaign with an attention score of{" "}
                           {attentionMetrics.attentionScore}%
                         </p>
-                        <Button onClick={() => setShowProofSubmission(true)} className="w-full">
-                          Submit Proof & Claim Reward
+                        <Button onClick={() => setIsCompleted(false)} className="w-full">
+                          View Proof Submission
                         </Button>
                       </div>
                     </div>
@@ -397,36 +394,10 @@ export default function CampaignViewer() {
             </Card>
 
             {/* Proof Submission */}
-            {showProofSubmission && (
-              <Card className="border-accent">
-                <CardHeader>
-                  <CardTitle className="font-serif text-accent">Submit Proof of Attention</CardTitle>
-                  <CardDescription>Your engagement has been verified. Claim your reward!</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="bg-accent/10 rounded-lg p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle className="w-5 h-5 text-accent" />
-                        <span className="font-medium">Verification Complete</span>
-                      </div>
-                      <div className="text-sm space-y-1">
-                        <p>Attention Score: {attentionMetrics.attentionScore}%</p>
-                        <p>
-                          Time Engaged: {Math.floor(attentionMetrics.timeSpent / 60)}m {attentionMetrics.timeSpent % 60}
-                          s
-                        </p>
-                        <p>Reward Earned: {campaign.reward}</p>
-                      </div>
-                    </div>
-                    <Button onClick={handleSubmitProof} className="w-full">
-                      <Coins className="w-4 h-4 mr-2" />
-                      Claim {campaign.reward}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+            <ProofSubmission 
+              campaignId={parseInt(campaignId)} 
+              onProofSubmitted={() => setIsCompleted(false)}
+            />
 
             {/* Tips */}
             <Card>

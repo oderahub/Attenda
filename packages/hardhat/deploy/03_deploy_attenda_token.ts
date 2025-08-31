@@ -21,11 +21,16 @@ const deployAttendaToken: DeployFunction = async function (hre: HardhatRuntimeEn
   const attendaToken = await hre.ethers.getContract("AttendaToken", deployer);
   console.log("AttendaToken deployed to:", await attendaToken.getAddress());
 
-  // Cast to any to access contract methods (type safety handled by contract)
-  const token = attendaToken as any;
-  console.log("Initial supply:", await token.totalSupply());
-  console.log("Token name:", await token.name());
-  console.log("Token symbol:", await token.symbol());
+  // Try to get contract info, but don't fail if it doesn't work
+  try {
+    const token = attendaToken as any;
+    console.log("Initial supply:", await token.totalSupply());
+    console.log("Token name:", await token.name());
+    console.log("Token symbol:", await token.symbol());
+  } catch (error) {
+    console.log("Contract deployed successfully, but couldn't read initial state (this is normal for some networks)");
+    console.log("Error details:", error.message);
+  }
 };
 
 export default deployAttendaToken;

@@ -34,6 +34,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useAccount } from "wagmi";
 import { useCampaignManager, useAttendaToken } from "@/hooks/use-contracts";
 import deployedContracts from "@/contracts/deployedContracts";
+import { ipfsService } from "@/lib/ipfs";
 
 interface CampaignData {
   title: string;
@@ -75,6 +76,7 @@ export default function CreateCampaign() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [ipfsHash, setIpfsHash] = useState("");
   const [isDeploying, setIsDeploying] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const { toast } = useToast();
   const { address, isConnected } = useAccount();
@@ -84,44 +86,59 @@ export default function CreateCampaign() {
   // Check token balance
   const [tokenBalance, setTokenBalance] = useState("0");
 
-  useEffect(() => {
+  const fetchBalance = async () => {
     if (address) {
-      const fetchBalance = async () => {
-        const balance = await getBalance();
-        setTokenBalance(balance);
-      };
-      fetchBalance();
+      const balance = await getBalance();
+      setTokenBalance(balance);
     }
+  };
+
+  useEffect(() => {
+    fetchBalance();
   }, [address, getBalance]);
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    // Simulate file upload progress
-    setIsUploading(true);
-    setUploadProgress(0);
-
-    const interval = setInterval(() => {
-      setUploadProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setIsUploading(false);
-          // Simulate IPFS hash generation
-          setIpfsHash("Qm" + Math.random().toString(36).substring(2, 15));
-          return 100;
-        }
-        return prev + 10;
-      });
-    }, 200);
-
-    // Create preview URL
+    // Create preview URL first
     const previewUrl = URL.createObjectURL(file);
     setCampaignData(prev => ({
       ...prev,
       mediaFile: file,
       mediaPreview: previewUrl,
     }));
+
+    // Start real IPFS upload
+    setIsUploading(true);
+    setUploadProgress(0);
+
+    try {
+      const result = await ipfsService.uploadFile(file, (progress) => {
+        setUploadProgress(progress);
+      });
+
+      setIpfsHash(result.hash);
+      toast({
+        title: "File uploaded successfully!",
+        description: `File uploaded to IPFS: ${result.hash.substring(0, 10)}...`,
+      });
+    } catch (error) {
+      console.error("IPFS upload failed:", error);
+      toast({
+        title: "Upload failed",
+        description: "Failed to upload file to IPFS. Please try again.",
+        variant: "destructive",
+      });
+      // Remove the file if upload fails
+      setCampaignData(prev => ({
+        ...prev,
+        mediaFile: null,
+        mediaPreview: "",
+      }));
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const removeFile = () => {
@@ -213,22 +230,10 @@ export default function CreateCampaign() {
   // Handle deployment success
   useEffect(() => {
     if (isConfirmed) {
+      setShowSuccessModal(true);
       toast({
         title: "Campaign deployed successfully!",
         description: "Your campaign is now live on the blockchain",
-      });
-      // Reset form or redirect
-      setCurrentStep(1);
-      setCampaignData({
-        title: "",
-        description: "",
-        category: "",
-        mediaFile: null,
-        mediaPreview: "",
-        rewardAmount: "",
-        duration: "",
-        maxParticipants: "",
-        targetAudience: "",
       });
     }
   }, [isConfirmed, toast]);
@@ -281,7 +286,17 @@ export default function CreateCampaign() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Token Balance</span>
-                <span className="text-lg font-bold text-accent">{tokenBalance} ATT</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-lg font-bold text-accent">{tokenBalance} ATT</span>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={fetchBalance}
+                    className="h-6 px-2 text-xs"
+                  >
+                    Refresh
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -630,6 +645,72 @@ export default function CreateCampaign() {
           )}
         </div>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-background border rounded-lg p-8 max-w-md mx-4 text-center">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle className="w-8 h-8 text-green-600" />
+            </div>
+            <h3 className="font-serif font-semibold text-xl mb-2">Campaign Created Successfully!</h3>
+            <p className="text-muted-foreground mb-6">
+              Your campaign has been deployed to the blockchain and is now live.
+            </p>
+            {ipfsHash && (
+              <div className="bg-muted/50 rounded-lg p-3 mb-4 text-left">
+                <p className="text-sm font-medium mb-1">IPFS Hash:</p>
+                <p className="text-xs font-mono text-muted-foreground break-all">
+                  {ipfsHash}
+                </p>
+                <a 
+                  href={`https://gateway.pinata.cloud/ipfs/${ipfsHash}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-accent hover:underline mt-1 inline-block"
+                >
+                  View on IPFS Gateway →
+                </a>
+              </div>
+            )}
+            <div className="space-y-3">
+              <Button 
+                onClick={() => {
+                  setShowSuccessModal(false);
+                  // Reset form
+                  setCurrentStep(1);
+                  setCampaignData({
+                    title: "",
+                    description: "",
+                    category: "",
+                    mediaFile: null,
+                    mediaPreview: "",
+                    rewardAmount: "",
+                    duration: "",
+                    maxParticipants: "",
+                    targetAudience: "",
+                  });
+                  setIpfsHash("");
+                }}
+                className="w-full"
+              >
+                Create Another Campaign
+              </Button>
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  setShowSuccessModal(false);
+                  // Redirect to dashboard
+                  window.location.href = "/attenda";
+                }}
+                className="w-full"
+              >
+                Go to Dashboard
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

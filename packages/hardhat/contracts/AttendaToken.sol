@@ -11,6 +11,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  */
 contract AttendaToken is ERC20, Ownable {
     uint256 public constant INITIAL_SUPPLY = 1_000_000 * 10**18; // 1 million tokens
+    uint256 public constant MAX_TEST_MINT = 1000 * 10**18; // 1000 tokens max for testing
     
     constructor() ERC20("Attenda Token", "ATT") Ownable() {
         _mint(msg.sender, INITIAL_SUPPLY);
@@ -23,6 +24,16 @@ contract AttendaToken is ERC20, Ownable {
      */
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
+    }
+    
+    /**
+     * @dev Public minting for testing purposes (anyone can call)
+     * @param amount Amount of tokens to mint (max 1000 for testing)
+     */
+    function mintForTesting(uint256 amount) public {
+        require(amount <= MAX_TEST_MINT, "Amount exceeds max test mint");
+        require(balanceOf(msg.sender) == 0, "Already has tokens");
+        _mint(msg.sender, amount);
     }
     
     /**

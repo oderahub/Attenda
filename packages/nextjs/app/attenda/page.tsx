@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Navigation } from "@/components/navigation";
 import { WalletStatus } from "@/components/wallet-status";
+import { AttendaFaucet } from "@/components/AttendaFaucet";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -130,6 +131,11 @@ export default function AttendaDashboard() {
           </Card>
 
           <WalletStatus />
+        </div>
+
+        {/* Token Faucet for Local Development */}
+        <div className="mb-8">
+          <AttendaFaucet />
         </div>
 
         {/* Tabs for different views */}
