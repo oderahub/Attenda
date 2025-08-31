@@ -85,6 +85,7 @@
     "bufferutil": "npm:bufferutil@^4.0.9",
     "utf-8-validate": "npm:utf-8-validate@^6.0.3"
   },
+  "packageManager": "yarn@4.0.2",
   "devDependencies": {
     "@types/node": "^20",
     "@types/nprogress": "^0",

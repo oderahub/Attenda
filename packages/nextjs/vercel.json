@@ -1,6 +1,6 @@
 {
-  "installCommand": "yarn install --ignore-optional",
-  "buildCommand": "yarn build",
+  "installCommand": "npm install --ignore-optional",
+  "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs"
 }
