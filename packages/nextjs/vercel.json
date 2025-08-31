@@ -1,11 +1,6 @@
 {
-  "installCommand": "yarn install",
+  "installCommand": "yarn install --ignore-optional",
   "buildCommand": "yarn build",
   "outputDirectory": ".next",
-  "framework": "nextjs",
-  "functions": {
-    "app/**/*.tsx": {
-      "maxDuration": 30
-    }
-  }
+  "framework": "nextjs"
 }
