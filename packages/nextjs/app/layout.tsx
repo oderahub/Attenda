@@ -1,61 +1,49 @@
-import "@rainbow-me/rainbowkit/styles.css";
-import { Metadata } from "next";
-import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
-import { ThemeProvider } from "~~/components/ThemeProvider";
-import "~~/styles/globals.css";
+import type React from "react";
+import type { Metadata } from "next";
+import { Playfair_Display, Source_Sans_3 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Web3Provider } from "@/lib/web3-providers";
+import { Suspense } from "react";
+import "./globals.css";
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : `http://localhost:${process.env.PORT || 3000}`;
-const imageUrl = `${baseUrl}/thumbnail.jpg`;
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair-display",
+  weight: ["400", "700"],
+});
 
-const title = "Scaffold-Lisk App";
-const titleTemplate = "%s | Scaffold-Lisk";
-const description = "Built with 🏗 Scaffold-Lisk";
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-source-sans",
+  weight: ["400", "500", "600"],
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-  title: {
-    default: title,
-    template: titleTemplate,
-  },
-  description,
-  openGraph: {
-    title: {
-      default: title,
-      template: titleTemplate,
-    },
-    description,
-    images: [
-      {
-        url: imageUrl,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: [imageUrl],
-    title: {
-      default: title,
-      template: titleTemplate,
-    },
-    description,
-  },
-  icons: {
-    icon: [{ url: "/favicon.ico", sizes: "32x32", type: "image/png" }],
-  },
+  title: "Attenda - Decentralized Attention Economy",
+  description: "Earn cryptocurrency rewards for paying attention to digital content",
+  generator: "v0.app",
 };
 
-const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html suppressHydrationWarning>
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
-          <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
-        </ThemeProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`font-sans ${playfairDisplay.variable} ${sourceSans.variable} antialiased`}>
+        <Suspense>
+          <Web3Provider>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+              {children}
+            </ThemeProvider>
+          </Web3Provider>
+          <Analytics />
+        </Suspense>
       </body>
     </html>
   );
-};
-
-export default ScaffoldEthApp;
+}
