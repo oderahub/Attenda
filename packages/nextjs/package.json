@@ -78,14 +78,18 @@
     "vaul": "^1.1.2",
     "viem": "^2.21.19",
     "wagmi": "^2.12.17",
-    "zod": "^4.1.5",
+    "zod": "^3.22.4",
     "zustand": "^5.0.1"
   },
   "resolutions": {
     "bufferutil": "npm:bufferutil@^4.0.9",
-    "utf-8-validate": "npm:utf-8-validate@^6.0.3"
+    "utf-8-validate": "npm:utf-8-validate@^6.0.3",
+    "zod": "^3.22.4"
   },
   "packageManager": "yarn@4.0.2",
+  "overrides": {
+    "zod": "^3.22.4"
+  },
   "devDependencies": {
     "@types/node": "^20",
     "@types/nprogress": "^0",
