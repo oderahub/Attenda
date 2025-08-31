@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { InheritanceTooltip } from "./InheritanceTooltip";
 import { Abi, AbiFunction } from "abitype";
 import { Address, TransactionReceipt } from "viem";
-import { useContractWrite, useNetwork, useWaitForTransaction } from "wagmi";
+import { useContractWrite, useAccount, useTransaction } from "wagmi";
 import {
   ContractInput,
   TxReceipt,
@@ -34,40 +34,42 @@ export const WriteOnlyFunctionForm = ({
 }: WriteOnlyFunctionFormProps) => {
   const [form, setForm] = useState<Record<string, any>>(() => getInitialFormState(abiFunction));
   const [txValue, setTxValue] = useState<string | bigint>("");
-  const { chain } = useNetwork();
+  const { chain } = useAccount();
   const writeTxn = useTransactor();
   const { targetNetwork } = useTargetNetwork();
   const writeDisabled = !chain || chain?.id !== targetNetwork.id;
 
   const {
     data: result,
-    isLoading,
-    writeAsync,
+    isPending,
+    write,
   } = useContractWrite({
     address: contractAddress,
-    functionName: abiFunction.name,
     abi: abi,
+    functionName: abiFunction.name,
     args: getParsedContractFunctionArgs(form),
   });
 
   const handleWrite = async () => {
-    if (writeAsync) {
+    if (write) {
       try {
-        const makeWriteWithParams = () => writeAsync({ value: BigInt(txValue) });
+        const makeWriteWithParams = () => write({ value: BigInt(txValue) });
         await writeTxn(makeWriteWithParams);
         onChange();
       } catch (e: any) {
-        console.error("⚡️ ~ file: WriteOnlyFunctionForm.tsx:handleWrite ~ error", e);
+        console.error("⚡️ ~ file: WriteOnlyFunctionFormForm.tsx:handleWrite ~ error", e);
       }
     }
   };
 
   const [displayedTxResult, setDisplayedTxResult] = useState<TransactionReceipt>();
-  const { data: txResult } = useWaitForTransaction({
-    hash: result?.hash,
+  const { data: txResult } = useTransaction({
+    hash: result,
   });
   useEffect(() => {
-    setDisplayedTxResult(txResult);
+    if (txResult) {
+      setDisplayedTxResult(txResult as TransactionReceipt);
+    }
   }, [txResult]);
 
   // TODO use `useMemo` to optimize also update in ReadOnlyFunctionForm
@@ -126,8 +128,8 @@ export const WriteOnlyFunctionForm = ({
             }`}
             data-tip={`${writeDisabled && "Wallet not connected or in the wrong network"}`}
           >
-            <button className="btn btn-secondary btn-sm" disabled={writeDisabled || isLoading} onClick={handleWrite}>
-              {isLoading && <span className="loading loading-spinner loading-xs"></span>}
+            <button className="btn btn-secondary btn-sm" disabled={writeDisabled || isPending} onClick={handleWrite}>
+              {isPending && <span className="loading loading-spinner loading-xs"></span>}
               Send 💸
             </button>
           </div>

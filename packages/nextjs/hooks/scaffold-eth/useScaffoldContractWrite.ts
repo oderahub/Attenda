@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useTargetNetwork } from "./useTargetNetwork";
 import { Abi, ExtractAbiFunctionNames } from "abitype";
-import { useContractWrite, useNetwork } from "wagmi";
+import { useContractWrite, useAccount } from "wagmi";
 import { useDeployedContractInfo, useTransactor } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { ContractAbi, ContractName, UseScaffoldWriteConfig } from "~~/utils/scaffold-eth/contract";
 
-type UpdatedArgs = Parameters<ReturnType<typeof useContractWrite<Abi, string, undefined>>["writeAsync"]>[0];
+type UpdatedArgs = Parameters<ReturnType<typeof useContractWrite<Abi, string, undefined>>["write"]>[0];
 
 /**
  * Wrapper around wagmi's useContractWrite hook which automatically loads (by name) the contract ABI and address from
@@ -32,13 +32,12 @@ export const useScaffoldContractWrite = <
   ...writeConfig
 }: UseScaffoldWriteConfig<TContractName, TFunctionName>) => {
   const { data: deployedContractData } = useDeployedContractInfo(contractName);
-  const { chain } = useNetwork();
+  const { chain } = useAccount();
   const writeTx = useTransactor();
   const [isMining, setIsMining] = useState(false);
   const { targetNetwork } = useTargetNetwork();
 
   const wagmiContractWrite = useContractWrite({
-    chainId: targetNetwork.id,
     address: deployedContractData?.address,
     abi: deployedContractData?.abi as Abi,
     functionName: functionName as any,
@@ -68,12 +67,12 @@ export const useScaffoldContractWrite = <
       return;
     }
 
-    if (wagmiContractWrite.writeAsync) {
+    if (wagmiContractWrite.write) {
       try {
         setIsMining(true);
         const writeTxResult = await writeTx(
           () =>
-            wagmiContractWrite.writeAsync({
+            wagmiContractWrite.write({
               args: newArgs ?? args,
               value: newValue ?? value,
               ...otherConfig,
@@ -96,7 +95,7 @@ export const useScaffoldContractWrite = <
   return {
     ...wagmiContractWrite,
     isMining,
-    // Overwrite wagmi's write async
-    writeAsync: sendContractWriteTx,
+    // Overwrite wagmi's write
+    write: sendContractWriteTx,
   };
 };

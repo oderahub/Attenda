@@ -41,14 +41,9 @@ export const Address = ({ address, disableAddressLink, format, size = "base" }: 
 
   const { data: fetchedEns } = useEnsName({
     address: checkSumAddress,
-    enabled: isAddress(checkSumAddress ?? ""),
-    chainId: 1,
   });
   const { data: fetchedEnsAvatar } = useEnsAvatar({
     name: fetchedEns,
-    enabled: Boolean(fetchedEns),
-    chainId: 1,
-    cacheTime: 30_000,
   });
 
   // We need to apply this pattern to avoid Hydration errors.

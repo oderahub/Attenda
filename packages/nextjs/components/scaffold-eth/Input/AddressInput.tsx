@@ -3,7 +3,7 @@ import { blo } from "blo";
 import { useDebounceValue } from "usehooks-ts";
 import { Address, isAddress } from "viem";
 import { useEnsAddress, useEnsAvatar, useEnsName } from "wagmi";
-import { CommonInputProps, InputBase, isENS } from "~~/components/scaffold-eth";
+import { CommonInputProps, InputBase } from "~~/components/scaffold-eth";
 
 /**
  * Address input with ENS name resolution
@@ -25,9 +25,6 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled }: C
     isSuccess: isEnsAddressSuccess,
   } = useEnsAddress({
     name: settledValue,
-    enabled: isDebouncedValueLive && isENS(debouncedValue),
-    chainId: 1,
-    cacheTime: 30_000,
   });
 
   const [enteredEnsName, setEnteredEnsName] = useState<string>();
@@ -38,16 +35,10 @@ export const AddressInput = ({ value, name, placeholder, onChange, disabled }: C
     isSuccess: isEnsNameSuccess,
   } = useEnsName({
     address: settledValue as Address,
-    enabled: isAddress(debouncedValue),
-    chainId: 1,
-    cacheTime: 30_000,
   });
 
   const { data: ensAvatar, isLoading: isEnsAvtarLoading } = useEnsAvatar({
     name: ensName,
-    enabled: Boolean(ensName),
-    chainId: 1,
-    cacheTime: 30_000,
   });
 
   // ens => address

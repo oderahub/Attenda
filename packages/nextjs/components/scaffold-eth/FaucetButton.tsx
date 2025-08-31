@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { createWalletClient, http, parseEther } from "viem";
 import { hardhat } from "viem/chains";
-import { useAccount, useNetwork } from "wagmi";
-import { useBalance } from "wagmi";
+import { useAccount, useBalance } from "wagmi";
 import { BanknotesIcon } from "@heroicons/react/24/outline";
 import { useTransactor } from "~~/hooks/scaffold-eth";
 
@@ -25,10 +24,9 @@ export const FaucetButton = () => {
 
   const { data: balance } = useBalance({
     address,
-    watch: true,
   });
 
-  const { chain: ConnectedChain } = useNetwork();
+  const { chain: ConnectedChain } = useAccount();
 
   const [loading, setLoading] = useState(false);
 

@@ -25,7 +25,6 @@ export const Balance = ({ address, className = "", usdMode }: BalanceProps) => {
     isLoading,
   } = useBalance({
     address,
-    watch: true,
   });
 
   const [displayUsdMode, setDisplayUsdMode] = useState(price > 0 ? Boolean(usdMode) : false);
