@@ -97,7 +97,14 @@
     "prettier": "^2.8.4",
     "tailwindcss": "^3.4.17",
     "type-fest": "^4.6.0",
-    "typescript": "^5",
-    "vercel": "^32.4.1"
-  }
+    "typescript": "^5"
+  },
+  "overrides": {
+    "bufferutil": "npm:bufferutil@^4.0.9",
+    "utf-8-validate": "npm:utf-8-validate@^6.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "vercel": "^32.4.1"
 }
