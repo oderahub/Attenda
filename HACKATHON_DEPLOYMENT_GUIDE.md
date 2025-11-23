@@ -72,3 +72,5 @@ yarn vercel --prod
 
 **Your Attenda MVP is ready to win! 🏆**
 
+
+

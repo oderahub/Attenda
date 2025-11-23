@@ -5,8 +5,8 @@
  * Usage: ts-node scripts/update-contracts.ts
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 interface ContractAddresses {
   AttendaToken: string;
@@ -15,7 +15,7 @@ interface ContractAddresses {
   BuyMeACoffee: string;
 }
 
-function updateContracts(chainId: number, addresses: ContractAddresses) {
+export function updateContracts(chainId: number, addresses: ContractAddresses) {
   const contractsPath = path.join(__dirname, '../contracts/deployedContracts.ts');
   
   if (!fs.existsSync(contractsPath)) {
@@ -58,7 +58,7 @@ function updateContracts(chainId: number, addresses: ContractAddresses) {
 }
 
 // Example usage - replace with actual addresses after deployment
-const liskSepoliaAddresses: ContractAddresses = {
+export const liskSepoliaAddresses: ContractAddresses = {
   AttendaToken: "0x...", // Replace with actual address
   CampaignManager: "0x...", // Replace with actual address
   ProofOfAttention: "0x...", // Replace with actual address
@@ -74,4 +74,6 @@ console.log("2. Copy addresses from deployment output");
 console.log("3. Update liskSepoliaAddresses object");
 console.log("4. Uncomment updateContracts call");
 console.log("5. Run: ts-node scripts/update-contracts.ts");
+
+
 

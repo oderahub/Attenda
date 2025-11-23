@@ -32,20 +32,14 @@ async function main() {
   const proofOfAttentionAddress = await proofOfAttention.getAddress();
   console.log("✅ ProofOfAttention deployed to:", proofOfAttentionAddress);
 
-  // Deploy BuyMeACoffee (bonus feature)
-  console.log("\n📝 Deploying BuyMeACoffee...");
-  const BuyMeACoffee = await ethers.getContractFactory("BuyMeACoffee");
-  const buyMeACoffee = await BuyMeACoffee.deploy();
-  await buyMeACoffee.waitForDeployment();
-  const buyMeACoffeeAddress = await buyMeACoffee.getAddress();
-  console.log("✅ BuyMeACoffee deployed to:", buyMeACoffeeAddress);
+ 
 
   console.log("\n🎉 All contracts deployed successfully to Lisk Sepolia!");
   console.log("\n📋 Contract Addresses:");
   console.log("AttendaToken:", attendaTokenAddress);
   console.log("CampaignManager:", campaignManagerAddress);
   console.log("ProofOfAttention:", proofOfAttentionAddress);
-  console.log("BuyMeACoffee:", buyMeACoffeeAddress);
+  
 
   console.log("\n🔗 Lisk Sepolia Explorer: https://sepolia-blockscout.lisk.com");
   console.log("\n⚠️  IMPORTANT: Update your frontend deployedContracts.ts with these addresses!");
@@ -57,3 +51,6 @@ main()
     console.error("❌ Deployment failed:", error);
     process.exit(1);
   });
+
+
+

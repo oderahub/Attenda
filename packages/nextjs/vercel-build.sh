@@ -18,3 +18,5 @@ echo "🔨 Building Next.js application..."
 yarn build
 
 echo "✅ Build completed successfully!"
+
+
