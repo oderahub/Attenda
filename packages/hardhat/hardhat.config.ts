@@ -128,7 +128,7 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     celoSepolia: {
-      url: "https://alfajores-forno.celo-testnet.org",
+      url: "https://forno.celo-sepolia.celo-testnet.org",
       accounts: [deployerPrivateKey],
     },
     mode: {
