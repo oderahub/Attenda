@@ -58,7 +58,7 @@ export function updateContracts(chainId: number, addresses: ContractAddresses) {
 }
 
 // Example usage - replace with actual addresses after deployment
-export const liskSepoliaAddresses: ContractAddresses = {
+export const celoSepoliaAddresses: ContractAddresses = {
   AttendaToken: "0x...", // Replace with actual address
   CampaignManager: "0x...", // Replace with actual address
   ProofOfAttention: "0x...", // Replace with actual address
@@ -66,12 +66,12 @@ export const liskSepoliaAddresses: ContractAddresses = {
 };
 
 // Uncomment and run after deployment
-// updateContracts(4202, liskSepoliaAddresses);
+// updateContracts(44787, celoSepoliaAddresses);
 
 console.log("🔧 Contract Update Script Ready");
-console.log("1. Deploy contracts to Lisk Sepolia");
+console.log("1. Deploy contracts to Celo Sepolia");
 console.log("2. Copy addresses from deployment output");
-console.log("3. Update liskSepoliaAddresses object");
+console.log("3. Update celoSepoliaAddresses object");
 console.log("4. Uncomment updateContracts call");
 console.log("5. Run: ts-node scripts/update-contracts.ts");
 

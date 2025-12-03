@@ -1,26 +1,26 @@
 import { defineChain } from "viem";
 
-export const liskSepolia = /*#__PURE__*/ defineChain({
-  id: 4202,
-  network: "lisk-sepolia",
-  name: "Lisk Sepolia Testnet",
-  nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+export const celoSepolia = /*#__PURE__*/ defineChain({
+  id: 44787,
+  network: "alfajores",
+  name: "Celo Alfajores Testnet",
+  nativeCurrency: { name: "Celo", symbol: "CELO", decimals: 18 },
   rpcUrls: {
     default: {
-      http: ["https://rpc.sepolia-api.lisk.com"],
+      http: ["https://alfajores-forno.celo-testnet.org"],
     },
     public: {
-      http: ["https://rpc.sepolia-api.lisk.com"],
+      http: ["https://alfajores-forno.celo-testnet.org"],
     },
   },
   blockExplorers: {
-    blockscout: {
-      name: "Blockscout",
-      url: "https://sepolia-blockscout.lisk.com",
+    celoscan: {
+      name: "Celoscan",
+      url: "https://alfajores.celoscan.io",
     },
     default: {
-      name: "Blockscout",
-      url: "https://sepolia-blockscout.lisk.com",
+      name: "Celoscan",
+      url: "https://alfajores.celoscan.io",
     },
   },
   testnet: true,

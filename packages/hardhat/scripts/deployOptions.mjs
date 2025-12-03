@@ -16,7 +16,7 @@ import inquirer from "inquirer";
           { name: "OP Sepolia", value: "optimismSepolia" },
           { name: "Base Sepolia", value: "baseSepolia" },
           { name: "Zora Sepolia", value: "zoraSepolia" },
-          { name: "Lisk Sepolia", value: "liskSepolia" },
+          { name: "Celo Sepolia", value: "celoSepolia" },
           { name: "Mode Sepolia", value: "modeSepolia" },
           { name: "All the above", value: "all" },
           { name: "Others (specify)", value: "others" }, // Add this line
@@ -30,7 +30,7 @@ import inquirer from "inquirer";
       },
     ]);
 
-    let allNetworks = ["hardhat", "optimismSepolia", "baseSepolia", "zoraSepolia", "liskSepolia", "modeSepolia"];
+    let allNetworks = ["hardhat", "optimismSepolia", "baseSepolia", "zoraSepolia", "celoSepolia", "modeSepolia"];
     let selectedNetworks = answers.networks;
 
     // Check if "all the above" is selected

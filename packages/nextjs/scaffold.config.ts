@@ -1,21 +1,21 @@
 import * as chains from "viem/chains";
 
-// Define Lisk Sepolia chain for production
-const liskSepolia = {
-  id: 4202,
-  name: "Lisk Sepolia",
-  network: "lisk-sepolia",
+// Define Celo Sepolia (Alfajores) chain for production
+const celoSepolia = {
+  id: 44787,
+  name: "Celo Alfajores",
+  network: "alfajores",
   nativeCurrency: {
     decimals: 18,
-    name: "ETH",
-    symbol: "ETH",
+    name: "CELO",
+    symbol: "CELO",
   },
   rpcUrls: {
-    default: { http: ["https://rpc.sepolia-api.lisk.com"] },
-    public: { http: ["https://rpc.sepolia-api.lisk.com"] },
+    default: { http: ["https://alfajores-forno.celo-testnet.org"] },
+    public: { http: ["https://alfajores-forno.celo-testnet.org"] },
   },
   blockExplorers: {
-    default: { name: "Lisk Sepolia Explorer", url: "https://sepolia-blockscout.lisk.com" },
+    default: { name: "Celo Alfajores Explorer", url: "https://alfajores.celoscan.io" },
   },
   testnet: true,
 } as const;
@@ -30,8 +30,8 @@ export type ScaffoldConfig = {
 };
 
 const scaffoldConfig = {
-  // Use Lisk Sepolia for production, Hardhat for local development
-  targetNetworks: process.env.NODE_ENV === "production" ? [liskSepolia] : [chains.hardhat],
+  // Use Celo Sepolia for production, Hardhat for local development
+  targetNetworks: process.env.NODE_ENV === "production" ? [celoSepolia] : [chains.hardhat],
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect if you only target the local network (default is 4000)

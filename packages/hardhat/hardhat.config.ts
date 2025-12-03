@@ -127,8 +127,8 @@ const config: HardhatUserConfig = {
       url: "https://sepolia.rpc.zora.energy",
       accounts: [deployerPrivateKey],
     },
-    liskSepolia: {
-      url: "https://rpc.sepolia-api.lisk.com",
+    celoSepolia: {
+      url: "https://alfajores-forno.celo-testnet.org",
       accounts: [deployerPrivateKey],
     },
     mode: {
