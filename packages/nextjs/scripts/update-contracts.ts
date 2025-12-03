@@ -66,7 +66,7 @@ export const celoSepoliaAddresses: ContractAddresses = {
 };
 
 // Uncomment and run after deployment
-// updateContracts(44787, celoSepoliaAddresses);
+// updateContracts(11142220, celoSepoliaAddresses);
 
 console.log("🔧 Contract Update Script Ready");
 console.log("1. Deploy contracts to Celo Sepolia");

@@ -1,26 +1,26 @@
 import { defineChain } from "viem";
 
 export const celoSepolia = /*#__PURE__*/ defineChain({
-  id: 44787,
-  network: "alfajores",
-  name: "Celo Alfajores Testnet",
+  id: 11142220,
+  network: "celo-sepolia",
+  name: "Celo Sepolia Testnet",
   nativeCurrency: { name: "Celo", symbol: "CELO", decimals: 18 },
   rpcUrls: {
     default: {
-      http: ["https://alfajores-forno.celo-testnet.org"],
+      http: ["https://forno.celo-sepolia.celo-testnet.org"],
     },
     public: {
-      http: ["https://alfajores-forno.celo-testnet.org"],
+      http: ["https://forno.celo-sepolia.celo-testnet.org"],
     },
   },
   blockExplorers: {
     celoscan: {
       name: "Celoscan",
-      url: "https://alfajores.celoscan.io",
+      url: "https://sepolia.celoscan.io",
     },
     default: {
       name: "Celoscan",
-      url: "https://alfajores.celoscan.io",
+      url: "https://sepolia.celoscan.io",
     },
   },
   testnet: true,

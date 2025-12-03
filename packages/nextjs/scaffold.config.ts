@@ -1,21 +1,21 @@
 import * as chains from "viem/chains";
 
-// Define Celo Sepolia (Alfajores) chain for production
+// Define Celo Sepolia chain for production
 const celoSepolia = {
-  id: 44787,
-  name: "Celo Alfajores",
-  network: "alfajores",
+  id: 11142220,
+  name: "Celo Sepolia",
+  network: "celo-sepolia",
   nativeCurrency: {
     decimals: 18,
     name: "CELO",
     symbol: "CELO",
   },
   rpcUrls: {
-    default: { http: ["https://alfajores-forno.celo-testnet.org"] },
-    public: { http: ["https://alfajores-forno.celo-testnet.org"] },
+    default: { http: ["https://forno.celo-sepolia.celo-testnet.org"] },
+    public: { http: ["https://forno.celo-sepolia.celo-testnet.org"] },
   },
   blockExplorers: {
-    default: { name: "Celo Alfajores Explorer", url: "https://alfajores.celoscan.io" },
+    default: { name: "Celo Sepolia Explorer", url: "https://sepolia.celoscan.io" },
   },
   testnet: true,
 } as const;

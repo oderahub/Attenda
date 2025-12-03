@@ -38,7 +38,7 @@ async function main() {
   console.log("CampaignManager:", campaignManagerAddress);
   console.log("ProofOfAttention:", proofOfAttentionAddress);
 
-  console.log("\n🔗 Celo Sepolia Explorer: https://alfajores.celoscan.io");
+  console.log("\n🔗 Celo Sepolia Explorer: https://sepolia.celoscan.io");
   console.log("\n⚠️  IMPORTANT: Update your frontend deployedContracts.ts with these addresses!");
 }
 
