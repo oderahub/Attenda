@@ -19,7 +19,7 @@ describe("YourContract", function () {
     });
 
     it("Should allow setting a new message", async function () {
-      const newGreeting = "Learn Scaffold-Lisk! :)";
+      const newGreeting = "Learn Scaffold-Celo! :)";
 
       await yourContract.setGreeting(newGreeting);
       expect(await yourContract.greeting()).to.equal(newGreeting);
