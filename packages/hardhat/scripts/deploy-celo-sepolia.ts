@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  console.log("🚀 Deploying Attenda MVP to Lisk Sepolia...");
+  console.log("🚀 Deploying Attenda MVP to Celo Sepolia...");
 
   // Get deployer account
   const [deployer] = await ethers.getSigners();
@@ -32,25 +32,19 @@ async function main() {
   const proofOfAttentionAddress = await proofOfAttention.getAddress();
   console.log("✅ ProofOfAttention deployed to:", proofOfAttentionAddress);
 
- 
-
-  console.log("\n🎉 All contracts deployed successfully to Lisk Sepolia!");
+  console.log("\n🎉 All contracts deployed successfully to Celo Sepolia!");
   console.log("\n📋 Contract Addresses:");
   console.log("AttendaToken:", attendaTokenAddress);
   console.log("CampaignManager:", campaignManagerAddress);
   console.log("ProofOfAttention:", proofOfAttentionAddress);
-  
 
-  console.log("\n🔗 Lisk Sepolia Explorer: https://sepolia-blockscout.lisk.com");
+  console.log("\n🔗 Celo Sepolia Explorer: https://alfajores.celoscan.io");
   console.log("\n⚠️  IMPORTANT: Update your frontend deployedContracts.ts with these addresses!");
 }
 
 main()
   .then(() => process.exit(0))
-  .catch((error) => {
+  .catch(error => {
     console.error("❌ Deployment failed:", error);
     process.exit(1);
   });
-
-
-
