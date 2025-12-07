@@ -29,10 +29,10 @@ const deployProofOfAttention: DeployFunction = async function (hre: HardhatRunti
   console.log("ProofOfAttention deployed to:", await proofOfAttention.getAddress());
 
   // Cast to any to access contract methods (type safety handled by contract)
-  const proof = proofOfAttention as any;
-  console.log("AttendaToken address:", await proof.attendaToken());
-  console.log("Validation threshold:", await proof.validationThreshold());
-  console.log("Owner is validator:", await proof.isValidator(deployer));
+  // const proof = proofOfAttention as any;
+  // console.log("AttendaToken address:", await proof.attendaToken());
+  // console.log("Validation threshold:", await proof.validationThreshold());
+  // console.log("Owner is validator:", await proof.isValidator(deployer));
 };
 
 export default deployProofOfAttention;

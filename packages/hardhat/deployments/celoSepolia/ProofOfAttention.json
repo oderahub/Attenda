@@ -1,0 +1,1229 @@
+{
+  "address": "0x0d83eE345B43733d86aE99aD0bAfbbf680c320A7",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_attendaToken",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "proofId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "reason",
+          "type": "string"
+        }
+      ],
+      "name": "ProofRejected",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "proofId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "ProofSubmitted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "proofId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        }
+      ],
+      "name": "ProofValidated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "proofId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "RewardDistributed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ValidationCriteriaUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        }
+      ],
+      "name": "ValidatorAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        }
+      ],
+      "name": "ValidatorRemoved",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        }
+      ],
+      "name": "addValidator",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "attendaToken",
+      "outputs": [
+        {
+          "internalType": "contract AttendaToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "campaignProofs",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "campaignValidationCriteria",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "minWatchDuration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxWatchDuration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "requireInteraction",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "requireScrollDepth",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minScrollDepth",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "proofId",
+          "type": "uint256"
+        }
+      ],
+      "name": "distributeReward",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "emergencyPause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCampaignProofs",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "proofId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getProof",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "campaignId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "watchDuration",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "ipfsProofHash",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "isValidated",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isRewarded",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "rewardAmount",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ProofOfAttention.AttentionProof",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "proofId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getProofValidationCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTotalProofs",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getValidationCriteria",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "minWatchDuration",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxWatchDuration",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "requireInteraction",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "requireScrollDepth",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "minScrollDepth",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ProofOfAttention.ValidationCriteria",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        }
+      ],
+      "name": "hasUserSubmittedProof",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "proofId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        }
+      ],
+      "name": "isProofValidatedBy",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        }
+      ],
+      "name": "isValidator",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "proofValidationCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "proofValidations",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "proofs",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "watchDuration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "ipfsProofHash",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "isValidated",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "isRewarded",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "rewardAmount",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "validator",
+          "type": "address"
+        }
+      ],
+      "name": "removeValidator",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minWatchDuration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxWatchDuration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "requireInteraction",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "requireScrollDepth",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minScrollDepth",
+          "type": "uint256"
+        }
+      ],
+      "name": "setValidationCriteria",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "watchDuration",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "ipfsProofHash",
+          "type": "string"
+        }
+      ],
+      "name": "submitProof",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "newThreshold",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateValidationThreshold",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "userProofSubmitted",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "proofId",
+          "type": "uint256"
+        }
+      ],
+      "name": "validateProof",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "validationThreshold",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "validators",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x7681554d58f1d568806bc678fe64770d6da42c0f93df12fb21d9dce16834c8f3",
+  "receipt": {
+    "to": null,
+    "from": "0x0bA50b9001b2ECcd3869CC73c07031dca1e11412",
+    "contractAddress": "0x0d83eE345B43733d86aE99aD0bAfbbf680c320A7",
+    "transactionIndex": 1,
+    "gasUsed": "1838748",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000800000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000200000000000000001000000000000000000000000000000000000020000000000000000000800020000000000000000000000000000400000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000008000000000000",
+    "blockHash": "0xd1d03c47728d06290a35c8f3b4b7d2bb888079a9e88f6de769a5dab04268bacb",
+    "transactionHash": "0x7681554d58f1d568806bc678fe64770d6da42c0f93df12fb21d9dce16834c8f3",
+    "logs": [
+      {
+        "transactionIndex": 1,
+        "blockNumber": 11818945,
+        "transactionHash": "0x7681554d58f1d568806bc678fe64770d6da42c0f93df12fb21d9dce16834c8f3",
+        "address": "0x0d83eE345B43733d86aE99aD0bAfbbf680c320A7",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000000ba50b9001b2eccd3869cc73c07031dca1e11412"
+        ],
+        "data": "0x",
+        "logIndex": 0,
+        "blockHash": "0xd1d03c47728d06290a35c8f3b4b7d2bb888079a9e88f6de769a5dab04268bacb"
+      }
+    ],
+    "blockNumber": 11818945,
+    "cumulativeGasUsed": "1884784",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xd305C380eE424584498B719c2c25b696AaC729e5"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "6612593e17691bd23d2b929629f4d79e",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_attendaToken\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"proofId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"reason\",\"type\":\"string\"}],\"name\":\"ProofRejected\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"proofId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"ProofSubmitted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"proofId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ProofValidated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"proofId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RewardDistributed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"ValidationCriteriaUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorRemoved\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"addValidator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"attendaToken\",\"outputs\":[{\"internalType\":\"contract AttendaToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"campaignProofs\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"campaignValidationCriteria\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"minWatchDuration\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxWatchDuration\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"requireInteraction\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"requireScrollDepth\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"minScrollDepth\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"proofId\",\"type\":\"uint256\"}],\"name\":\"distributeReward\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"emergencyPause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"getCampaignProofs\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"proofId\",\"type\":\"uint256\"}],\"name\":\"getProof\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"watchDuration\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"ipfsProofHash\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"isValidated\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isRewarded\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"rewardAmount\",\"type\":\"uint256\"}],\"internalType\":\"struct ProofOfAttention.AttentionProof\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"proofId\",\"type\":\"uint256\"}],\"name\":\"getProofValidationCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalProofs\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"}],\"name\":\"getValidationCriteria\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"minWatchDuration\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxWatchDuration\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"requireInteraction\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"requireScrollDepth\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"minScrollDepth\",\"type\":\"uint256\"}],\"internalType\":\"struct ProofOfAttention.ValidationCriteria\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"hasUserSubmittedProof\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"proofId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"isProofValidatedBy\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"isValidator\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"proofValidationCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"proofValidations\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"proofs\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"watchDuration\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"ipfsProofHash\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"isValidated\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isRewarded\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"rewardAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"removeValidator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"minWatchDuration\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxWatchDuration\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"requireInteraction\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"requireScrollDepth\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"minScrollDepth\",\"type\":\"uint256\"}],\"name\":\"setValidationCriteria\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"watchDuration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"ipfsProofHash\",\"type\":\"string\"}],\"name\":\"submitProof\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newThreshold\",\"type\":\"uint256\"}],\"name\":\"updateValidationThreshold\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userProofSubmitted\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"proofId\",\"type\":\"uint256\"}],\"name\":\"validateProof\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"validationThreshold\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"validators\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Handles verification and validation of user attention to advertisements\",\"kind\":\"dev\",\"methods\":{\"addValidator(address)\":{\"details\":\"Add a new validator\"},\"distributeReward(uint256)\":{\"details\":\"Distribute rewards for validated proofs\"},\"emergencyPause()\":{\"details\":\"Emergency pause for all validations (only owner)\"},\"getCampaignProofs(uint256)\":{\"details\":\"Get campaign proofs\"},\"getProof(uint256)\":{\"details\":\"Get proof details\"},\"getProofValidationCount(uint256)\":{\"details\":\"Get proof validation count\"},\"getTotalProofs()\":{\"details\":\"Get total proofs count\"},\"getValidationCriteria(uint256)\":{\"details\":\"Get validation criteria for a campaign\"},\"hasUserSubmittedProof(uint256,address)\":{\"details\":\"Check if user has submitted proof for campaign\"},\"isProofValidatedBy(uint256,address)\":{\"details\":\"Check if proof is validated by specific validator\"},\"isValidator(address)\":{\"details\":\"Check if address is validator\"},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"removeValidator(address)\":{\"details\":\"Remove a validator\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"setValidationCriteria(uint256,uint256,uint256,bool,bool,uint256)\":{\"details\":\"Set validation criteria for a campaign\"},\"submitProof(uint256,uint256,string)\":{\"details\":\"Submit proof of attention for a campaign\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"updateValidationThreshold(uint256)\":{\"details\":\"Update validation threshold\"},\"validateProof(uint256)\":{\"details\":\"Validate a proof of attention (only validators)\"}},\"title\":\"ProofOfAttention\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/ProofOfAttention.sol\":\"ProofOfAttention\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner account will be the one that deploys the contract. This\\n * can later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\n     */\\n    constructor() {\\n        _transferOwnership(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        require(owner() == _msgSender(), \\\"Ownable: caller is not the owner\\\");\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xba43b97fba0d32eb4254f6a5a297b39a19a247082a02d6e69349e071e2946218\",\"license\":\"MIT\"},\"@openzeppelin/contracts/security/ReentrancyGuard.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (security/ReentrancyGuard.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Contract module that helps prevent reentrant calls to a function.\\n *\\n * Inheriting from `ReentrancyGuard` will make the {nonReentrant} modifier\\n * available, which can be applied to functions to make sure there are no nested\\n * (reentrant) calls to them.\\n *\\n * Note that because there is a single `nonReentrant` guard, functions marked as\\n * `nonReentrant` may not call one another. This can be worked around by making\\n * those functions `private`, and then adding `external` `nonReentrant` entry\\n * points to them.\\n *\\n * TIP: If you would like to learn more about reentrancy and alternative ways\\n * to protect against it, check out our blog post\\n * https://blog.openzeppelin.com/reentrancy-after-istanbul/[Reentrancy After Istanbul].\\n */\\nabstract contract ReentrancyGuard {\\n    // Booleans are more expensive than uint256 or any type that takes up a full\\n    // word because each write operation emits an extra SLOAD to first read the\\n    // slot's contents, replace the bits taken up by the boolean, and then write\\n    // back. This is the compiler's defense against contract upgrades and\\n    // pointer aliasing, and it cannot be disabled.\\n\\n    // The values being non-zero value makes deployment a bit more expensive,\\n    // but in exchange the refund on every call to nonReentrant will be lower in\\n    // amount. Since refunds are capped to a percentage of the total\\n    // transaction's gas, it is best to keep them low in cases like this one, to\\n    // increase the likelihood of the full refund coming into effect.\\n    uint256 private constant _NOT_ENTERED = 1;\\n    uint256 private constant _ENTERED = 2;\\n\\n    uint256 private _status;\\n\\n    constructor() {\\n        _status = _NOT_ENTERED;\\n    }\\n\\n    /**\\n     * @dev Prevents a contract from calling itself, directly or indirectly.\\n     * Calling a `nonReentrant` function from another `nonReentrant`\\n     * function is not supported. It is possible to prevent this from happening\\n     * by making the `nonReentrant` function external, and making it call a\\n     * `private` function that does the actual work.\\n     */\\n    modifier nonReentrant() {\\n        _nonReentrantBefore();\\n        _;\\n        _nonReentrantAfter();\\n    }\\n\\n    function _nonReentrantBefore() private {\\n        // On the first call to nonReentrant, _status will be _NOT_ENTERED\\n        require(_status != _ENTERED, \\\"ReentrancyGuard: reentrant call\\\");\\n\\n        // Any calls to nonReentrant after this point will fail\\n        _status = _ENTERED;\\n    }\\n\\n    function _nonReentrantAfter() private {\\n        // By storing the original value once again, a refund is triggered (see\\n        // https://eips.ethereum.org/EIPS/eip-2200)\\n        _status = _NOT_ENTERED;\\n    }\\n\\n    /**\\n     * @dev Returns true if the reentrancy guard is currently set to \\\"entered\\\", which indicates there is a\\n     * `nonReentrant` function in the call stack.\\n     */\\n    function _reentrancyGuardEntered() internal view returns (bool) {\\n        return _status == _ENTERED;\\n    }\\n}\\n\",\"keccak256\":\"0xa535a5df777d44e945dd24aa43a11e44b024140fc340ad0dfe42acf4002aade1\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (token/ERC20/ERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"./IERC20.sol\\\";\\nimport \\\"./extensions/IERC20Metadata.sol\\\";\\nimport \\\"../../utils/Context.sol\\\";\\n\\n/**\\n * @dev Implementation of the {IERC20} interface.\\n *\\n * This implementation is agnostic to the way tokens are created. This means\\n * that a supply mechanism has to be added in a derived contract using {_mint}.\\n * For a generic mechanism see {ERC20PresetMinterPauser}.\\n *\\n * TIP: For a detailed writeup see our guide\\n * https://forum.openzeppelin.com/t/how-to-implement-erc20-supply-mechanisms/226[How\\n * to implement supply mechanisms].\\n *\\n * The default value of {decimals} is 18. To change this, you should override\\n * this function so it returns a different value.\\n *\\n * We have followed general OpenZeppelin Contracts guidelines: functions revert\\n * instead returning `false` on failure. This behavior is nonetheless\\n * conventional and does not conflict with the expectations of ERC20\\n * applications.\\n *\\n * Additionally, an {Approval} event is emitted on calls to {transferFrom}.\\n * This allows applications to reconstruct the allowance for all accounts just\\n * by listening to said events. Other implementations of the EIP may not emit\\n * these events, as it isn't required by the specification.\\n *\\n * Finally, the non-standard {decreaseAllowance} and {increaseAllowance}\\n * functions have been added to mitigate the well-known issues around setting\\n * allowances. See {IERC20-approve}.\\n */\\ncontract ERC20 is Context, IERC20, IERC20Metadata {\\n    mapping(address => uint256) private _balances;\\n\\n    mapping(address => mapping(address => uint256)) private _allowances;\\n\\n    uint256 private _totalSupply;\\n\\n    string private _name;\\n    string private _symbol;\\n\\n    /**\\n     * @dev Sets the values for {name} and {symbol}.\\n     *\\n     * All two of these values are immutable: they can only be set once during\\n     * construction.\\n     */\\n    constructor(string memory name_, string memory symbol_) {\\n        _name = name_;\\n        _symbol = symbol_;\\n    }\\n\\n    /**\\n     * @dev Returns the name of the token.\\n     */\\n    function name() public view virtual override returns (string memory) {\\n        return _name;\\n    }\\n\\n    /**\\n     * @dev Returns the symbol of the token, usually a shorter version of the\\n     * name.\\n     */\\n    function symbol() public view virtual override returns (string memory) {\\n        return _symbol;\\n    }\\n\\n    /**\\n     * @dev Returns the number of decimals used to get its user representation.\\n     * For example, if `decimals` equals `2`, a balance of `505` tokens should\\n     * be displayed to a user as `5.05` (`505 / 10 ** 2`).\\n     *\\n     * Tokens usually opt for a value of 18, imitating the relationship between\\n     * Ether and Wei. This is the default value returned by this function, unless\\n     * it's overridden.\\n     *\\n     * NOTE: This information is only used for _display_ purposes: it in\\n     * no way affects any of the arithmetic of the contract, including\\n     * {IERC20-balanceOf} and {IERC20-transfer}.\\n     */\\n    function decimals() public view virtual override returns (uint8) {\\n        return 18;\\n    }\\n\\n    /**\\n     * @dev See {IERC20-totalSupply}.\\n     */\\n    function totalSupply() public view virtual override returns (uint256) {\\n        return _totalSupply;\\n    }\\n\\n    /**\\n     * @dev See {IERC20-balanceOf}.\\n     */\\n    function balanceOf(address account) public view virtual override returns (uint256) {\\n        return _balances[account];\\n    }\\n\\n    /**\\n     * @dev See {IERC20-transfer}.\\n     *\\n     * Requirements:\\n     *\\n     * - `to` cannot be the zero address.\\n     * - the caller must have a balance of at least `amount`.\\n     */\\n    function transfer(address to, uint256 amount) public virtual override returns (bool) {\\n        address owner = _msgSender();\\n        _transfer(owner, to, amount);\\n        return true;\\n    }\\n\\n    /**\\n     * @dev See {IERC20-allowance}.\\n     */\\n    function allowance(address owner, address spender) public view virtual override returns (uint256) {\\n        return _allowances[owner][spender];\\n    }\\n\\n    /**\\n     * @dev See {IERC20-approve}.\\n     *\\n     * NOTE: If `amount` is the maximum `uint256`, the allowance is not updated on\\n     * `transferFrom`. This is semantically equivalent to an infinite approval.\\n     *\\n     * Requirements:\\n     *\\n     * - `spender` cannot be the zero address.\\n     */\\n    function approve(address spender, uint256 amount) public virtual override returns (bool) {\\n        address owner = _msgSender();\\n        _approve(owner, spender, amount);\\n        return true;\\n    }\\n\\n    /**\\n     * @dev See {IERC20-transferFrom}.\\n     *\\n     * Emits an {Approval} event indicating the updated allowance. This is not\\n     * required by the EIP. See the note at the beginning of {ERC20}.\\n     *\\n     * NOTE: Does not update the allowance if the current allowance\\n     * is the maximum `uint256`.\\n     *\\n     * Requirements:\\n     *\\n     * - `from` and `to` cannot be the zero address.\\n     * - `from` must have a balance of at least `amount`.\\n     * - the caller must have allowance for ``from``'s tokens of at least\\n     * `amount`.\\n     */\\n    function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {\\n        address spender = _msgSender();\\n        _spendAllowance(from, spender, amount);\\n        _transfer(from, to, amount);\\n        return true;\\n    }\\n\\n    /**\\n     * @dev Atomically increases the allowance granted to `spender` by the caller.\\n     *\\n     * This is an alternative to {approve} that can be used as a mitigation for\\n     * problems described in {IERC20-approve}.\\n     *\\n     * Emits an {Approval} event indicating the updated allowance.\\n     *\\n     * Requirements:\\n     *\\n     * - `spender` cannot be the zero address.\\n     */\\n    function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {\\n        address owner = _msgSender();\\n        _approve(owner, spender, allowance(owner, spender) + addedValue);\\n        return true;\\n    }\\n\\n    /**\\n     * @dev Atomically decreases the allowance granted to `spender` by the caller.\\n     *\\n     * This is an alternative to {approve} that can be used as a mitigation for\\n     * problems described in {IERC20-approve}.\\n     *\\n     * Emits an {Approval} event indicating the updated allowance.\\n     *\\n     * Requirements:\\n     *\\n     * - `spender` cannot be the zero address.\\n     * - `spender` must have allowance for the caller of at least\\n     * `subtractedValue`.\\n     */\\n    function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {\\n        address owner = _msgSender();\\n        uint256 currentAllowance = allowance(owner, spender);\\n        require(currentAllowance >= subtractedValue, \\\"ERC20: decreased allowance below zero\\\");\\n        unchecked {\\n            _approve(owner, spender, currentAllowance - subtractedValue);\\n        }\\n\\n        return true;\\n    }\\n\\n    /**\\n     * @dev Moves `amount` of tokens from `from` to `to`.\\n     *\\n     * This internal function is equivalent to {transfer}, and can be used to\\n     * e.g. implement automatic token fees, slashing mechanisms, etc.\\n     *\\n     * Emits a {Transfer} event.\\n     *\\n     * Requirements:\\n     *\\n     * - `from` cannot be the zero address.\\n     * - `to` cannot be the zero address.\\n     * - `from` must have a balance of at least `amount`.\\n     */\\n    function _transfer(address from, address to, uint256 amount) internal virtual {\\n        require(from != address(0), \\\"ERC20: transfer from the zero address\\\");\\n        require(to != address(0), \\\"ERC20: transfer to the zero address\\\");\\n\\n        _beforeTokenTransfer(from, to, amount);\\n\\n        uint256 fromBalance = _balances[from];\\n        require(fromBalance >= amount, \\\"ERC20: transfer amount exceeds balance\\\");\\n        unchecked {\\n            _balances[from] = fromBalance - amount;\\n            // Overflow not possible: the sum of all balances is capped by totalSupply, and the sum is preserved by\\n            // decrementing then incrementing.\\n            _balances[to] += amount;\\n        }\\n\\n        emit Transfer(from, to, amount);\\n\\n        _afterTokenTransfer(from, to, amount);\\n    }\\n\\n    /** @dev Creates `amount` tokens and assigns them to `account`, increasing\\n     * the total supply.\\n     *\\n     * Emits a {Transfer} event with `from` set to the zero address.\\n     *\\n     * Requirements:\\n     *\\n     * - `account` cannot be the zero address.\\n     */\\n    function _mint(address account, uint256 amount) internal virtual {\\n        require(account != address(0), \\\"ERC20: mint to the zero address\\\");\\n\\n        _beforeTokenTransfer(address(0), account, amount);\\n\\n        _totalSupply += amount;\\n        unchecked {\\n            // Overflow not possible: balance + amount is at most totalSupply + amount, which is checked above.\\n            _balances[account] += amount;\\n        }\\n        emit Transfer(address(0), account, amount);\\n\\n        _afterTokenTransfer(address(0), account, amount);\\n    }\\n\\n    /**\\n     * @dev Destroys `amount` tokens from `account`, reducing the\\n     * total supply.\\n     *\\n     * Emits a {Transfer} event with `to` set to the zero address.\\n     *\\n     * Requirements:\\n     *\\n     * - `account` cannot be the zero address.\\n     * - `account` must have at least `amount` tokens.\\n     */\\n    function _burn(address account, uint256 amount) internal virtual {\\n        require(account != address(0), \\\"ERC20: burn from the zero address\\\");\\n\\n        _beforeTokenTransfer(account, address(0), amount);\\n\\n        uint256 accountBalance = _balances[account];\\n        require(accountBalance >= amount, \\\"ERC20: burn amount exceeds balance\\\");\\n        unchecked {\\n            _balances[account] = accountBalance - amount;\\n            // Overflow not possible: amount <= accountBalance <= totalSupply.\\n            _totalSupply -= amount;\\n        }\\n\\n        emit Transfer(account, address(0), amount);\\n\\n        _afterTokenTransfer(account, address(0), amount);\\n    }\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the `owner` s tokens.\\n     *\\n     * This internal function is equivalent to `approve`, and can be used to\\n     * e.g. set automatic allowances for certain subsystems, etc.\\n     *\\n     * Emits an {Approval} event.\\n     *\\n     * Requirements:\\n     *\\n     * - `owner` cannot be the zero address.\\n     * - `spender` cannot be the zero address.\\n     */\\n    function _approve(address owner, address spender, uint256 amount) internal virtual {\\n        require(owner != address(0), \\\"ERC20: approve from the zero address\\\");\\n        require(spender != address(0), \\\"ERC20: approve to the zero address\\\");\\n\\n        _allowances[owner][spender] = amount;\\n        emit Approval(owner, spender, amount);\\n    }\\n\\n    /**\\n     * @dev Updates `owner` s allowance for `spender` based on spent `amount`.\\n     *\\n     * Does not update the allowance amount in case of infinite allowance.\\n     * Revert if not enough allowance is available.\\n     *\\n     * Might emit an {Approval} event.\\n     */\\n    function _spendAllowance(address owner, address spender, uint256 amount) internal virtual {\\n        uint256 currentAllowance = allowance(owner, spender);\\n        if (currentAllowance != type(uint256).max) {\\n            require(currentAllowance >= amount, \\\"ERC20: insufficient allowance\\\");\\n            unchecked {\\n                _approve(owner, spender, currentAllowance - amount);\\n            }\\n        }\\n    }\\n\\n    /**\\n     * @dev Hook that is called before any transfer of tokens. This includes\\n     * minting and burning.\\n     *\\n     * Calling conditions:\\n     *\\n     * - when `from` and `to` are both non-zero, `amount` of ``from``'s tokens\\n     * will be transferred to `to`.\\n     * - when `from` is zero, `amount` tokens will be minted for `to`.\\n     * - when `to` is zero, `amount` of ``from``'s tokens will be burned.\\n     * - `from` and `to` are never both zero.\\n     *\\n     * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].\\n     */\\n    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual {}\\n\\n    /**\\n     * @dev Hook that is called after any transfer of tokens. This includes\\n     * minting and burning.\\n     *\\n     * Calling conditions:\\n     *\\n     * - when `from` and `to` are both non-zero, `amount` of ``from``'s tokens\\n     * has been transferred to `to`.\\n     * - when `from` is zero, `amount` tokens have been minted for `to`.\\n     * - when `to` is zero, `amount` of ``from``'s tokens have been burned.\\n     * - `from` and `to` are never both zero.\\n     *\\n     * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].\\n     */\\n    function _afterTokenTransfer(address from, address to, uint256 amount) internal virtual {}\\n}\\n\",\"keccak256\":\"0xa56ca923f70c1748830700250b19c61b70db9a683516dc5e216694a50445d99c\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `from` to `to` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 amount) external returns (bool);\\n}\\n\",\"keccak256\":\"0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (token/ERC20/extensions/IERC20Metadata.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../IERC20.sol\\\";\\n\\n/**\\n * @dev Interface for the optional metadata functions from the ERC20 standard.\\n *\\n * _Available since v4.1._\\n */\\ninterface IERC20Metadata is IERC20 {\\n    /**\\n     * @dev Returns the name of the token.\\n     */\\n    function name() external view returns (string memory);\\n\\n    /**\\n     * @dev Returns the symbol of the token.\\n     */\\n    function symbol() external view returns (string memory);\\n\\n    /**\\n     * @dev Returns the decimals places of the token.\\n     */\\n    function decimals() external view returns (uint8);\\n}\\n\",\"keccak256\":\"0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Counters.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Counters.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @title Counters\\n * @author Matt Condon (@shrugs)\\n * @dev Provides counters that can only be incremented, decremented or reset. This can be used e.g. to track the number\\n * of elements in a mapping, issuing ERC721 ids, or counting request ids.\\n *\\n * Include with `using Counters for Counters.Counter;`\\n */\\nlibrary Counters {\\n    struct Counter {\\n        // This variable should never be directly accessed by users of the library: interactions must be restricted to\\n        // the library's function. As of Solidity v0.5.2, this cannot be enforced, though there is a proposal to add\\n        // this feature: see https://github.com/ethereum/solidity/issues/4637\\n        uint256 _value; // default: 0\\n    }\\n\\n    function current(Counter storage counter) internal view returns (uint256) {\\n        return counter._value;\\n    }\\n\\n    function increment(Counter storage counter) internal {\\n        unchecked {\\n            counter._value += 1;\\n        }\\n    }\\n\\n    function decrement(Counter storage counter) internal {\\n        uint256 value = counter._value;\\n        require(value > 0, \\\"Counter: decrement overflow\\\");\\n        unchecked {\\n            counter._value = value - 1;\\n        }\\n    }\\n\\n    function reset(Counter storage counter) internal {\\n        counter._value = 0;\\n    }\\n}\\n\",\"keccak256\":\"0xf0018c2440fbe238dd3a8732fa8e17a0f9dce84d31451dc8a32f6d62b349c9f1\",\"license\":\"MIT\"},\"contracts/AttendaToken.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.17;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/ERC20.sol\\\";\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\n\\n/**\\n * @title AttendaToken\\n * @dev ERC20 token for the Attenda MVP system\\n * This token will be used for rewards and payments in the attention economy\\n */\\ncontract AttendaToken is ERC20, Ownable {\\n    uint256 public constant INITIAL_SUPPLY = 1_000_000 * 10**18; // 1 million tokens\\n    uint256 public constant MAX_TEST_MINT = 1000 * 10**18; // 1000 tokens max for testing\\n    \\n    constructor() ERC20(\\\"Attenda Token\\\", \\\"ATT\\\") Ownable() {\\n        _mint(msg.sender, INITIAL_SUPPLY);\\n    }\\n    \\n    /**\\n     * @dev Mint new tokens (only owner)\\n     * @param to Address to mint tokens to\\n     * @param amount Amount of tokens to mint\\n     */\\n    function mint(address to, uint256 amount) public onlyOwner {\\n        _mint(to, amount);\\n    }\\n    \\n    /**\\n     * @dev Public minting for testing purposes (anyone can call)\\n     * @param amount Amount of tokens to mint (max 1000 for testing)\\n     */\\n    function mintForTesting(uint256 amount) public {\\n        require(amount <= MAX_TEST_MINT, \\\"Amount exceeds max test mint\\\");\\n        require(balanceOf(msg.sender) == 0, \\\"Already has tokens\\\");\\n        _mint(msg.sender, amount);\\n    }\\n    \\n    /**\\n     * @dev Burn tokens from caller's account\\n     * @param amount Amount of tokens to burn\\n     */\\n    function burn(uint256 amount) public {\\n        _burn(msg.sender, amount);\\n    }\\n    \\n    /**\\n     * @dev Burn tokens from a specific account (only owner)\\n     * @param from Address to burn tokens from\\n     * @param amount Amount of tokens to burn\\n     */\\n    function burnFrom(address from, uint256 amount) public onlyOwner {\\n        _burn(from, amount);\\n    }\\n} \",\"keccak256\":\"0x4d152a516069a2e0b95a6e4bf2939b6fa3093dae2ed50d781dfcf4640758e40d\",\"license\":\"MIT\"},\"contracts/ProofOfAttention.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.17;\\n\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\nimport \\\"@openzeppelin/contracts/security/ReentrancyGuard.sol\\\";\\nimport \\\"@openzeppelin/contracts/utils/Counters.sol\\\";\\nimport \\\"./AttendaToken.sol\\\";\\n\\n/**\\n * @title ProofOfAttention\\n * @dev Handles verification and validation of user attention to advertisements\\n */\\ncontract ProofOfAttention is Ownable, ReentrancyGuard {\\n    using Counters for Counters.Counter;\\n    \\n    AttendaToken public attendaToken;\\n    \\n    struct AttentionProof {\\n        uint256 id;\\n        address user;\\n        uint256 campaignId;\\n        uint256 watchDuration;\\n        uint256 timestamp;\\n        string ipfsProofHash;\\n        bool isValidated;\\n        bool isRewarded;\\n        uint256 rewardAmount;\\n    }\\n    \\n    struct ValidationCriteria {\\n        uint256 minWatchDuration;\\n        uint256 maxWatchDuration;\\n        bool requireInteraction;\\n        bool requireScrollDepth;\\n        uint256 minScrollDepth;\\n    }\\n    \\n    Counters.Counter private _proofIds;\\n    \\n    mapping(uint256 => AttentionProof) public proofs;\\n    mapping(uint256 => ValidationCriteria) public campaignValidationCriteria;\\n    mapping(uint256 => mapping(address => bool)) public userProofSubmitted;\\n    mapping(uint256 => address[]) public campaignProofs;\\n    \\n    uint256 public validationThreshold = 3; // Number of validators required\\n    mapping(address => bool) public validators;\\n    mapping(uint256 => mapping(address => bool)) public proofValidations;\\n    mapping(uint256 => uint256) public proofValidationCount;\\n    \\n    event ProofSubmitted(uint256 indexed proofId, uint256 indexed campaignId, address indexed user);\\n    event ProofValidated(uint256 indexed proofId, address indexed validator);\\n    event ProofRejected(uint256 indexed proofId, address indexed validator, string reason);\\n    event RewardDistributed(uint256 indexed proofId, address indexed user, uint256 amount);\\n    event ValidatorAdded(address indexed validator);\\n    event ValidatorRemoved(address indexed validator);\\n    event ValidationCriteriaUpdated(uint256 indexed campaignId);\\n    \\n    modifier onlyValidator() {\\n        require(validators[msg.sender], \\\"Only validators can call this\\\");\\n        _;\\n    }\\n    \\n    modifier proofExists(uint256 proofId) {\\n        require(proofs[proofId].id != 0, \\\"Proof does not exist\\\");\\n        _;\\n    }\\n    \\n    modifier proofNotValidated(uint256 proofId) {\\n        require(!proofs[proofId].isValidated, \\\"Proof already validated\\\");\\n        _;\\n    }\\n    \\n    constructor(address _attendaToken) Ownable() {\\n        attendaToken = AttendaToken(_attendaToken);\\n        validators[msg.sender] = true; // Owner is initial validator\\n    }\\n    \\n    /**\\n     * @dev Submit proof of attention for a campaign\\n     */\\n    function submitProof(\\n        uint256 campaignId,\\n        uint256 watchDuration,\\n        string memory ipfsProofHash\\n    ) external nonReentrant returns (uint256) {\\n        require(bytes(ipfsProofHash).length > 0, \\\"IPFS proof hash cannot be empty\\\");\\n        require(watchDuration > 0, \\\"Watch duration must be greater than 0\\\");\\n        require(!userProofSubmitted[campaignId][msg.sender], \\\"Proof already submitted for this campaign\\\");\\n        \\n        // Validate against campaign criteria\\n        ValidationCriteria memory criteria = campaignValidationCriteria[campaignId];\\n        if (criteria.minWatchDuration > 0) {\\n            require(watchDuration >= criteria.minWatchDuration, \\\"Watch duration too short\\\");\\n        }\\n        if (criteria.maxWatchDuration > 0) {\\n            require(watchDuration <= criteria.maxWatchDuration, \\\"Watch duration too long\\\");\\n        }\\n        \\n        _proofIds.increment();\\n        uint256 proofId = _proofIds.current();\\n        \\n        proofs[proofId] = AttentionProof({\\n            id: proofId,\\n            user: msg.sender,\\n            campaignId: campaignId,\\n            watchDuration: watchDuration,\\n            timestamp: block.timestamp,\\n            ipfsProofHash: ipfsProofHash,\\n            isValidated: false,\\n            isRewarded: false,\\n            rewardAmount: 0\\n        });\\n        \\n        userProofSubmitted[campaignId][msg.sender] = true;\\n        campaignProofs[campaignId].push(msg.sender);\\n        \\n        emit ProofSubmitted(proofId, campaignId, msg.sender);\\n        return proofId;\\n    }\\n    \\n    /**\\n     * @dev Validate a proof of attention (only validators)\\n     */\\n    function validateProof(uint256 proofId) external onlyValidator proofExists(proofId) proofNotValidated(proofId) {\\n        require(!proofValidations[proofId][msg.sender], \\\"Already validated this proof\\\");\\n        \\n        AttentionProof storage proof = proofs[proofId];\\n        ValidationCriteria memory criteria = campaignValidationCriteria[proof.campaignId];\\n        \\n        // Basic validation logic\\n        bool isValid = true;\\n        string memory reason = \\\"\\\";\\n        \\n        if (criteria.minWatchDuration > 0 && proof.watchDuration < criteria.minWatchDuration) {\\n            isValid = false;\\n            reason = \\\"Watch duration too short\\\";\\n        }\\n        \\n        if (criteria.maxWatchDuration > 0 && proof.watchDuration > criteria.maxWatchDuration) {\\n            isValid = false;\\n            reason = \\\"Watch duration too long\\\";\\n        }\\n        \\n        // Additional validation can be added here (interaction checks, scroll depth, etc.)\\n        \\n        if (isValid) {\\n            proofValidations[proofId][msg.sender] = true;\\n            proofValidationCount[proofId]++;\\n            \\n            emit ProofValidated(proofId, msg.sender);\\n            \\n            // Check if enough validations reached\\n            if (proofValidationCount[proofId] >= validationThreshold) {\\n                proof.isValidated = true;\\n                // Calculate reward based on watch duration and campaign criteria\\n                proof.rewardAmount = calculateReward(proof.watchDuration, proof.campaignId);\\n            }\\n        } else {\\n            emit ProofRejected(proofId, msg.sender, reason);\\n        }\\n    }\\n    \\n    /**\\n     * @dev Distribute rewards for validated proofs\\n     */\\n    function distributeReward(uint256 proofId) external nonReentrant proofExists(proofId) {\\n        AttentionProof storage proof = proofs[proofId];\\n        require(proof.isValidated, \\\"Proof must be validated first\\\");\\n        require(!proof.isRewarded, \\\"Reward already distributed\\\");\\n        require(proof.rewardAmount > 0, \\\"No reward to distribute\\\");\\n        \\n        // Transfer tokens to user\\n        require(attendaToken.transfer(proof.user, proof.rewardAmount), \\\"Reward transfer failed\\\");\\n        \\n        proof.isRewarded = true;\\n        \\n        emit RewardDistributed(proofId, proof.user, proof.rewardAmount);\\n    }\\n    \\n    /**\\n     * @dev Set validation criteria for a campaign\\n     */\\n    function setValidationCriteria(\\n        uint256 campaignId,\\n        uint256 minWatchDuration,\\n        uint256 maxWatchDuration,\\n        bool requireInteraction,\\n        bool requireScrollDepth,\\n        uint256 minScrollDepth\\n    ) external onlyOwner {\\n        campaignValidationCriteria[campaignId] = ValidationCriteria({\\n            minWatchDuration: minWatchDuration,\\n            maxWatchDuration: maxWatchDuration,\\n            requireInteraction: requireInteraction,\\n            requireScrollDepth: requireScrollDepth,\\n            minScrollDepth: minScrollDepth\\n        });\\n        \\n        emit ValidationCriteriaUpdated(campaignId);\\n    }\\n    \\n    /**\\n     * @dev Add a new validator\\n     */\\n    function addValidator(address validator) external onlyOwner {\\n        require(validator != address(0), \\\"Invalid validator address\\\");\\n        require(!validators[validator], \\\"Already a validator\\\");\\n        \\n        validators[validator] = true;\\n        emit ValidatorAdded(validator);\\n    }\\n    \\n    /**\\n     * @dev Remove a validator\\n     */\\n    function removeValidator(address validator) external onlyOwner {\\n        require(validators[validator], \\\"Not a validator\\\");\\n        require(validator != owner(), \\\"Cannot remove owner as validator\\\");\\n        \\n        validators[validator] = false;\\n        emit ValidatorRemoved(validator);\\n    }\\n    \\n    /**\\n     * @dev Update validation threshold\\n     */\\n    function updateValidationThreshold(uint256 newThreshold) external onlyOwner {\\n        require(newThreshold > 0, \\\"Threshold must be greater than 0\\\");\\n        validationThreshold = newThreshold;\\n    }\\n    \\n    /**\\n     * @dev Calculate reward based on watch duration and campaign criteria\\n     */\\n    function calculateReward(uint256 watchDuration, uint256 /* campaignId */) internal pure returns (uint256) {\\n        // Base reward calculation - can be customized per campaign\\n        uint256 baseReward = 100 * 10**18; // 100 ATT base reward\\n        \\n        // Bonus for longer watch duration (up to 2x)\\n        uint256 durationBonus = 10; // Base multiplier\\n        if (watchDuration > 300) { // 5 minutes\\n            durationBonus = 20; // 2x\\n        } else if (watchDuration > 180) { // 3 minutes\\n            durationBonus = 15; // 1.5x\\n        }\\n        \\n        return (baseReward * durationBonus) / 10;\\n    }\\n    \\n    /**\\n     * @dev Get proof details\\n     */\\n    function getProof(uint256 proofId) external view returns (AttentionProof memory) {\\n        return proofs[proofId];\\n    }\\n    \\n    /**\\n     * @dev Get validation criteria for a campaign\\n     */\\n    function getValidationCriteria(uint256 campaignId) external view returns (ValidationCriteria memory) {\\n        return campaignValidationCriteria[campaignId];\\n    }\\n    \\n    /**\\n     * @dev Get campaign proofs\\n     */\\n    function getCampaignProofs(uint256 campaignId) external view returns (address[] memory) {\\n        return campaignProofs[campaignId];\\n    }\\n    \\n    /**\\n     * @dev Check if user has submitted proof for campaign\\n     */\\n    function hasUserSubmittedProof(uint256 campaignId, address user) external view returns (bool) {\\n        return userProofSubmitted[campaignId][user];\\n    }\\n    \\n    /**\\n     * @dev Get proof validation count\\n     */\\n    function getProofValidationCount(uint256 proofId) external view returns (uint256) {\\n        return proofValidationCount[proofId];\\n    }\\n    \\n    /**\\n     * @dev Check if proof is validated by specific validator\\n     */\\n    function isProofValidatedBy(uint256 proofId, address validator) external view returns (bool) {\\n        return proofValidations[proofId][validator];\\n    }\\n    \\n    /**\\n     * @dev Get total proofs count\\n     */\\n    function getTotalProofs() external view returns (uint256) {\\n        return _proofIds.current();\\n    }\\n    \\n    /**\\n     * @dev Check if address is validator\\n     */\\n    function isValidator(address validator) external view returns (bool) {\\n        return validators[validator];\\n    }\\n    \\n    /**\\n     * @dev Emergency pause for all validations (only owner)\\n     */\\n    function emergencyPause() external onlyOwner {\\n        for (uint256 i = 1; i <= _proofIds.current(); i++) {\\n            if (proofs[i].isValidated && !proofs[i].isRewarded) {\\n                proofs[i].isValidated = false;\\n            }\\n        }\\n    }\\n} \",\"keccak256\":\"0x71c09b6de8460a4f4f242140e8d55c32bfc8aee7932ddfa303f7f29871b5abbd\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405260036008553480156200001657600080fd5b5060405162001f4b38038062001f4b8339810160408190526200003991620000da565b62000044336200008a565b6001808055600280546001600160a01b0319166001600160a01b039390931692909217909155336000908152600960205260409020805460ff191690911790556200010c565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b600060208284031215620000ed57600080fd5b81516001600160a01b03811681146200010557600080fd5b9392505050565b611e2f806200011c6000396000f3fe608060405234801561001057600080fd5b50600436106101c45760003560e01c8063954f706b116100f9578063c92d6c5f11610097578063f2fde38b11610071578063f2fde38b146104e9578063fa52c7d8146104fc578063facd743b1461051f578063fd83cb8e1461054b57600080fd5b8063c92d6c5f14610494578063eeb6babf146104a7578063f25a2540146104b057600080fd5b80639b1bc0c9116100d35780639b1bc0c9146103f85780639ddaf5aa14610400578063a25c934114610428578063c1efb94c1461043b57600080fd5b8063954f706b1461036257806395f01e58146103d257806396a27761146103e557600080fd5b80634d238c8e11610166578063715018a611610140578063715018a6146103025780638da5cb5b1461030a5780638f963ef21461032f578063940a4e451461034f57600080fd5b80634d238c8e146102d45780634e8ca983146102e757806351858e27146102fa57600080fd5b80631e7731b9116101a25780631e7731b914610250578063292145bd1461026557806340a141ff1461029357806349941671146102a657600080fd5b806311149ada146101c9578063188f00b2146101f25780631d4f109614610230575b600080fd5b6101dc6101d73660046118a6565b61055e565b6040516101e99190611905565b60405180910390f35b6102206102003660046119bf565b600660209081526000928352604080842090915290825290205460ff1681565b60405190151581526020016101e9565b61024361023e3660046118a6565b6106d7565b6040516101e991906119eb565b61026361025e3660046118a6565b610743565b005b6102856102733660046118a6565b6000908152600b602052604090205490565b6040519081526020016101e9565b6102636102a1366004611a38565b6107a5565b6102206102b43660046119bf565b600a60209081526000928352604080842090915290825290205460ff1681565b6102636102e2366004611a38565b6108bc565b6102636102f53660046118a6565b6109c5565b610263610d5a565b610263610dda565b6000546001600160a01b03165b6040516001600160a01b0390911681526020016101e9565b61028561033d3660046118a6565b600b6020526000908152604090205481565b61026361035d3660046118a6565b610dee565b6103a46103703660046118a6565b60056020526000908152604090208054600182015460028301546003909301549192909160ff808316926101009004169085565b604080519586526020860194909452911515928401929092529015156060830152608082015260a0016101e9565b6102856103e0366004611a69565b61108e565b6102636103f3366004611b3b565b611446565b6102856114f7565b61041361040e3660046118a6565b611507565b6040516101e999989796959493929190611b99565b6102206104363660046119bf565b6115eb565b61044e6104493660046118a6565b611618565b6040516101e99190600060a08201905082518252602083015160208301526040830151151560408301526060830151151560608301526080830151608083015292915050565b6103176104a2366004611bf6565b6116a9565b61028560085481565b6102206104be3660046119bf565b6000918252600a602090815260408084206001600160a01b0393909316845291905290205460ff1690565b6102636104f7366004611a38565b6116e1565b61022061050a366004611a38565b60096020526000908152604090205460ff1681565b61022061052d366004611a38565b6001600160a01b031660009081526009602052604090205460ff1690565b600254610317906001600160a01b031681565b6105ba6040518061012001604052806000815260200160006001600160a01b0316815260200160008152602001600081526020016000815260200160608152602001600015158152602001600015158152602001600081525090565b6000828152600460208181526040928390208351610120810185528154815260018201546001600160a01b0316928101929092526002810154938201939093526003830154606082015290820154608082015260058201805491929160a08401919061062590611c18565b80601f016020809104026020016040519081016040528092919081815260200182805461065190611c18565b801561069e5780601f106106735761010080835404028352916020019161069e565b820191906000526020600020905b81548152906001019060200180831161068157829003601f168201915b5050509183525050600682015460ff80821615156020840152610100909104161515604082015260079091015460609091015292915050565b60008181526007602090815260409182902080548351818402810184019094528084526060939283018282801561073757602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311610719575b50505050509050919050565b61074b611757565b600081116107a05760405162461bcd60e51b815260206004820181905260248201527f5468726573686f6c64206d7573742062652067726561746572207468616e203060448201526064015b60405180910390fd5b600855565b6107ad611757565b6001600160a01b03811660009081526009602052604090205460ff166108075760405162461bcd60e51b815260206004820152600f60248201526e2737ba1030903b30b634b230ba37b960891b6044820152606401610797565b6000546001600160a01b03166001600160a01b0316816001600160a01b0316036108735760405162461bcd60e51b815260206004820181905260248201527f43616e6e6f742072656d6f7665206f776e65722061732076616c696461746f726044820152606401610797565b6001600160a01b038116600081815260096020526040808220805460ff19169055517fe1434e25d6611e0db941968fdc97811c982ac1602e951637d206f5fdda9dd8f19190a250565b6108c4611757565b6001600160a01b03811661091a5760405162461bcd60e51b815260206004820152601960248201527f496e76616c69642076616c696461746f722061646472657373000000000000006044820152606401610797565b6001600160a01b03811660009081526009602052604090205460ff16156109795760405162461bcd60e51b815260206004820152601360248201527220b63932b0b23c9030903b30b634b230ba37b960691b6044820152606401610797565b6001600160a01b038116600081815260096020526040808220805460ff19166001179055517fe366c1c0452ed8eec96861e9e54141ebff23c9ec89fe27b996b45f5ec38849879190a250565b3360009081526009602052604090205460ff16610a245760405162461bcd60e51b815260206004820152601d60248201527f4f6e6c792076616c696461746f72732063616e2063616c6c20746869730000006044820152606401610797565b600081815260046020526040812054829103610a795760405162461bcd60e51b8152602060048201526014602482015273141c9bdbd988191bd95cc81b9bdd08195e1a5cdd60621b6044820152606401610797565b600082815260046020526040902060060154829060ff1615610add5760405162461bcd60e51b815260206004820152601760248201527f50726f6f6620616c72656164792076616c6964617465640000000000000000006044820152606401610797565b6000838152600a6020908152604080832033845290915290205460ff1615610b475760405162461bcd60e51b815260206004820152601c60248201527f416c72656164792076616c69646174656420746869732070726f6f66000000006044820152606401610797565b6000838152600460209081526040808320600280820154855260058452828520835160a08101855281548152600180830154828801529282015460ff8082161515838801526101009091041615156060820152600390910154608082015283519485019093529383528151909391929015801590610bc9575082516003850154105b15610c0357505060408051808201909152601881527715d85d18da08191d5c985d1a5bdb881d1bdbc81cda1bdc9d60421b60208201526000905b60008360200151118015610c1e575082602001518460030154115b15610c575750506040805180820190915260178152765761746368206475726174696f6e20746f6f206c6f6e6760481b60208201526000905b8115610d0e576000878152600a602090815260408083203384528252808320805460ff19166001179055898352600b9091528120805491610c9783611c68565b9091555050604051339088907fdf0dd3424b84ad41aac34c7beab2d6a3bdc3a42c198726627d92f194565a616290600090a36008546000888152600b602052604090205410610d095760068401805460ff1916600117905560038401546002850154610d0391906117b1565b60078501555b610d51565b336001600160a01b0316877fd335ceb9e9b5309dbaefabff78aaa012d3b53d0c7c8ccc74b41eafa8f9de547e83604051610d489190611c81565b60405180910390a35b50505050505050565b610d62611757565b60015b6003548111610dd75760008181526004602052604090206006015460ff168015610da65750600081815260046020526040902060060154610100900460ff16155b15610dc5576000818152600460205260409020600601805460ff191690555b80610dcf81611c68565b915050610d65565b50565b610de2611757565b610dec60006117fd565b565b610df661184d565b600081815260046020526040812054829103610e4b5760405162461bcd60e51b8152602060048201526014602482015273141c9bdbd988191bd95cc81b9bdd08195e1a5cdd60621b6044820152606401610797565b6000828152600460205260409020600681015460ff16610ead5760405162461bcd60e51b815260206004820152601d60248201527f50726f6f66206d7573742062652076616c6964617465642066697273740000006044820152606401610797565b6006810154610100900460ff1615610f075760405162461bcd60e51b815260206004820152601a60248201527f52657761726420616c72656164792064697374726962757465640000000000006044820152606401610797565b6000816007015411610f5b5760405162461bcd60e51b815260206004820152601760248201527f4e6f2072657761726420746f20646973747269627574650000000000000000006044820152606401610797565b6002546001820154600783015460405163a9059cbb60e01b81526001600160a01b039283166004820152602481019190915291169063a9059cbb906044016020604051808303816000875af1158015610fb8573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610fdc9190611c94565b6110215760405162461bcd60e51b815260206004820152601660248201527514995dd85c99081d1c985b9cd9995c8819985a5b195960521b6044820152606401610797565b60068101805461ff001916610100179055600181015460078201546040516001600160a01b039092169185917fab7542bafced3da2d8c881cb2dd1de859fac7c20d3650d2902ad389a64e088839161107b91815260200190565b60405180910390a35050610dd760018055565b600061109861184d565b60008251116110e95760405162461bcd60e51b815260206004820152601f60248201527f495046532070726f6f6620686173682063616e6e6f7420626520656d707479006044820152606401610797565b600083116111475760405162461bcd60e51b815260206004820152602560248201527f5761746368206475726174696f6e206d75737420626520677265617465722074604482015264068616e20360dc1b6064820152608401610797565b600084815260066020908152604080832033845290915290205460ff16156111c35760405162461bcd60e51b815260206004820152602960248201527f50726f6f6620616c7265616479207375626d697474656420666f7220746869736044820152681031b0b6b830b4b3b760b91b6064820152608401610797565b600084815260056020908152604091829020825160a0810184528154808252600183015493820193909352600282015460ff8082161515958301959095526101009004909316151560608401526003015460808301521561126a57805184101561126a5760405162461bcd60e51b815260206004820152601860248201527715d85d18da08191d5c985d1a5bdb881d1bdbc81cda1bdc9d60421b6044820152606401610797565b6020810151156112c25780602001518411156112c25760405162461bcd60e51b81526020600482015260176024820152765761746368206475726174696f6e20746f6f206c6f6e6760481b6044820152606401610797565b6112d0600380546001019055565b60006112db60035490565b60408051610120810182528281523360208083019182528284018b8152606084018b8152426080860190815260a086018c8152600060c0880181905260e088018190526101008801819052898152600495869052979097208651815594516001860180546001600160a01b0319166001600160a01b0390921691909117905591516002850155516003840155519082015591519293509160058201906113819082611d00565b5060c08201516006828101805460e086015161ffff1990911693151561ff00191693909317610100931515840217905592015160079182015560008881526020928352604080822033808452908552818320805460ff191660019081179091558b845293855281832080549485018155835293822090920180546001600160a01b031916841790559051889184917f10c713ee1fb0193f787278bc11d85253a8ab0e3d53ddc4c0ffb03e9082db3ce19190a491505061143f60018055565b9392505050565b61144e611757565b6040805160a0810182528681526020808201878152861515838501908152861515606085019081526080850187815260008d8152600590955286852095518655925160018601559051600285018054925115156101000261ff00199215159290921661ffff199093169290921717905551600390920191909155905187917f5934b5d46280b73f2218e6ab22013dea015fabccd70d6d800b1eccc4f55b73f891a2505050505050565b600061150260035490565b905090565b600460208190526000918252604090912080546001820154600283015460038401549484015460058501805494966001600160a01b0390941695929491929161154f90611c18565b80601f016020809104026020016040519081016040528092919081815260200182805461157b90611c18565b80156115c85780601f1061159d576101008083540402835291602001916115c8565b820191906000526020600020905b8154815290600101906020018083116115ab57829003601f168201915b505050506006830154600790930154919260ff8082169361010090920416915089565b60008281526006602090815260408083206001600160a01b038516845290915290205460ff165b92915050565b61164e6040518060a001604052806000815260200160008152602001600015158152602001600015158152602001600081525090565b50600090815260056020908152604091829020825160a08101845281548152600182015492810192909252600281015460ff808216151594840194909452610100900490921615156060820152600390910154608082015290565b600760205281600052604060002081815481106116c557600080fd5b6000918252602090912001546001600160a01b03169150829050565b6116e9611757565b6001600160a01b03811661174e5760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b6064820152608401610797565b610dd7816117fd565b6000546001600160a01b03163314610dec5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401610797565b600068056bc75e2d63100000600a61012c8511156117d1575060146117de565b60b48511156117de5750600f5b600a6117ea8284611dc0565b6117f49190611dd7565b95945050505050565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b60026001540361189f5760405162461bcd60e51b815260206004820152601f60248201527f5265656e7472616e637947756172643a207265656e7472616e742063616c6c006044820152606401610797565b6002600155565b6000602082840312156118b857600080fd5b5035919050565b6000815180845260005b818110156118e5576020818501810151868301820152016118c9565b506000602082860101526020601f19601f83011685010191505092915050565b60208152815160208201526000602083015161192c60408401826001600160a01b03169052565b506040830151606083015260608301516080830152608083015160a083015260a08301516101208060c08501526119676101408501836118bf565b915060c085015161197c60e086018215159052565b5060e08501516101006119928187018315159052565b959095015193019290925250919050565b80356001600160a01b03811681146119ba57600080fd5b919050565b600080604083850312156119d257600080fd5b823591506119e2602084016119a3565b90509250929050565b6020808252825182820181905260009190848201906040850190845b81811015611a2c5783516001600160a01b031683529284019291840191600101611a07565b50909695505050505050565b600060208284031215611a4a57600080fd5b61143f826119a3565b634e487b7160e01b600052604160045260246000fd5b600080600060608486031215611a7e57600080fd5b8335925060208401359150604084013567ffffffffffffffff80821115611aa457600080fd5b818601915086601f830112611ab857600080fd5b813581811115611aca57611aca611a53565b604051601f8201601f19908116603f01168101908382118183101715611af257611af2611a53565b81604052828152896020848701011115611b0b57600080fd5b8260208601602083013760006020848301015280955050505050509250925092565b8015158114610dd757600080fd5b60008060008060008060c08789031215611b5457600080fd5b8635955060208701359450604087013593506060870135611b7481611b2d565b92506080870135611b8481611b2d565b8092505060a087013590509295509295509295565b60006101208b835260018060a01b038b1660208401528960408401528860608401528760808401528060a0840152611bd3818401886118bf565b95151560c0840152505091151560e0830152610100909101529695505050505050565b60008060408385031215611c0957600080fd5b50508035926020909101359150565b600181811c90821680611c2c57607f821691505b602082108103611c4c57634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052601160045260246000fd5b600060018201611c7a57611c7a611c52565b5060010190565b60208152600061143f60208301846118bf565b600060208284031215611ca657600080fd5b815161143f81611b2d565b601f821115611cfb57600081815260208120601f850160051c81016020861015611cd85750805b601f850160051c820191505b81811015611cf757828155600101611ce4565b5050505b505050565b815167ffffffffffffffff811115611d1a57611d1a611a53565b611d2e81611d288454611c18565b84611cb1565b602080601f831160018114611d635760008415611d4b5750858301515b600019600386901b1c1916600185901b178555611cf7565b600085815260208120601f198616915b82811015611d9257888601518255948401946001909101908401611d73565b5085821015611db05787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b808202811582820484141761161257611612611c52565b600082611df457634e487b7160e01b600052601260045260246000fd5b50049056fea2646970667358221220a7dd91854205824de67298036d452f5e545c4b84751eee590c5782e9b06dcb4a64736f6c63430008110033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101c45760003560e01c8063954f706b116100f9578063c92d6c5f11610097578063f2fde38b11610071578063f2fde38b146104e9578063fa52c7d8146104fc578063facd743b1461051f578063fd83cb8e1461054b57600080fd5b8063c92d6c5f14610494578063eeb6babf146104a7578063f25a2540146104b057600080fd5b80639b1bc0c9116100d35780639b1bc0c9146103f85780639ddaf5aa14610400578063a25c934114610428578063c1efb94c1461043b57600080fd5b8063954f706b1461036257806395f01e58146103d257806396a27761146103e557600080fd5b80634d238c8e11610166578063715018a611610140578063715018a6146103025780638da5cb5b1461030a5780638f963ef21461032f578063940a4e451461034f57600080fd5b80634d238c8e146102d45780634e8ca983146102e757806351858e27146102fa57600080fd5b80631e7731b9116101a25780631e7731b914610250578063292145bd1461026557806340a141ff1461029357806349941671146102a657600080fd5b806311149ada146101c9578063188f00b2146101f25780631d4f109614610230575b600080fd5b6101dc6101d73660046118a6565b61055e565b6040516101e99190611905565b60405180910390f35b6102206102003660046119bf565b600660209081526000928352604080842090915290825290205460ff1681565b60405190151581526020016101e9565b61024361023e3660046118a6565b6106d7565b6040516101e991906119eb565b61026361025e3660046118a6565b610743565b005b6102856102733660046118a6565b6000908152600b602052604090205490565b6040519081526020016101e9565b6102636102a1366004611a38565b6107a5565b6102206102b43660046119bf565b600a60209081526000928352604080842090915290825290205460ff1681565b6102636102e2366004611a38565b6108bc565b6102636102f53660046118a6565b6109c5565b610263610d5a565b610263610dda565b6000546001600160a01b03165b6040516001600160a01b0390911681526020016101e9565b61028561033d3660046118a6565b600b6020526000908152604090205481565b61026361035d3660046118a6565b610dee565b6103a46103703660046118a6565b60056020526000908152604090208054600182015460028301546003909301549192909160ff808316926101009004169085565b604080519586526020860194909452911515928401929092529015156060830152608082015260a0016101e9565b6102856103e0366004611a69565b61108e565b6102636103f3366004611b3b565b611446565b6102856114f7565b61041361040e3660046118a6565b611507565b6040516101e999989796959493929190611b99565b6102206104363660046119bf565b6115eb565b61044e6104493660046118a6565b611618565b6040516101e99190600060a08201905082518252602083015160208301526040830151151560408301526060830151151560608301526080830151608083015292915050565b6103176104a2366004611bf6565b6116a9565b61028560085481565b6102206104be3660046119bf565b6000918252600a602090815260408084206001600160a01b0393909316845291905290205460ff1690565b6102636104f7366004611a38565b6116e1565b61022061050a366004611a38565b60096020526000908152604090205460ff1681565b61022061052d366004611a38565b6001600160a01b031660009081526009602052604090205460ff1690565b600254610317906001600160a01b031681565b6105ba6040518061012001604052806000815260200160006001600160a01b0316815260200160008152602001600081526020016000815260200160608152602001600015158152602001600015158152602001600081525090565b6000828152600460208181526040928390208351610120810185528154815260018201546001600160a01b0316928101929092526002810154938201939093526003830154606082015290820154608082015260058201805491929160a08401919061062590611c18565b80601f016020809104026020016040519081016040528092919081815260200182805461065190611c18565b801561069e5780601f106106735761010080835404028352916020019161069e565b820191906000526020600020905b81548152906001019060200180831161068157829003601f168201915b5050509183525050600682015460ff80821615156020840152610100909104161515604082015260079091015460609091015292915050565b60008181526007602090815260409182902080548351818402810184019094528084526060939283018282801561073757602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311610719575b50505050509050919050565b61074b611757565b600081116107a05760405162461bcd60e51b815260206004820181905260248201527f5468726573686f6c64206d7573742062652067726561746572207468616e203060448201526064015b60405180910390fd5b600855565b6107ad611757565b6001600160a01b03811660009081526009602052604090205460ff166108075760405162461bcd60e51b815260206004820152600f60248201526e2737ba1030903b30b634b230ba37b960891b6044820152606401610797565b6000546001600160a01b03166001600160a01b0316816001600160a01b0316036108735760405162461bcd60e51b815260206004820181905260248201527f43616e6e6f742072656d6f7665206f776e65722061732076616c696461746f726044820152606401610797565b6001600160a01b038116600081815260096020526040808220805460ff19169055517fe1434e25d6611e0db941968fdc97811c982ac1602e951637d206f5fdda9dd8f19190a250565b6108c4611757565b6001600160a01b03811661091a5760405162461bcd60e51b815260206004820152601960248201527f496e76616c69642076616c696461746f722061646472657373000000000000006044820152606401610797565b6001600160a01b03811660009081526009602052604090205460ff16156109795760405162461bcd60e51b815260206004820152601360248201527220b63932b0b23c9030903b30b634b230ba37b960691b6044820152606401610797565b6001600160a01b038116600081815260096020526040808220805460ff19166001179055517fe366c1c0452ed8eec96861e9e54141ebff23c9ec89fe27b996b45f5ec38849879190a250565b3360009081526009602052604090205460ff16610a245760405162461bcd60e51b815260206004820152601d60248201527f4f6e6c792076616c696461746f72732063616e2063616c6c20746869730000006044820152606401610797565b600081815260046020526040812054829103610a795760405162461bcd60e51b8152602060048201526014602482015273141c9bdbd988191bd95cc81b9bdd08195e1a5cdd60621b6044820152606401610797565b600082815260046020526040902060060154829060ff1615610add5760405162461bcd60e51b815260206004820152601760248201527f50726f6f6620616c72656164792076616c6964617465640000000000000000006044820152606401610797565b6000838152600a6020908152604080832033845290915290205460ff1615610b475760405162461bcd60e51b815260206004820152601c60248201527f416c72656164792076616c69646174656420746869732070726f6f66000000006044820152606401610797565b6000838152600460209081526040808320600280820154855260058452828520835160a08101855281548152600180830154828801529282015460ff8082161515838801526101009091041615156060820152600390910154608082015283519485019093529383528151909391929015801590610bc9575082516003850154105b15610c0357505060408051808201909152601881527715d85d18da08191d5c985d1a5bdb881d1bdbc81cda1bdc9d60421b60208201526000905b60008360200151118015610c1e575082602001518460030154115b15610c575750506040805180820190915260178152765761746368206475726174696f6e20746f6f206c6f6e6760481b60208201526000905b8115610d0e576000878152600a602090815260408083203384528252808320805460ff19166001179055898352600b9091528120805491610c9783611c68565b9091555050604051339088907fdf0dd3424b84ad41aac34c7beab2d6a3bdc3a42c198726627d92f194565a616290600090a36008546000888152600b602052604090205410610d095760068401805460ff1916600117905560038401546002850154610d0391906117b1565b60078501555b610d51565b336001600160a01b0316877fd335ceb9e9b5309dbaefabff78aaa012d3b53d0c7c8ccc74b41eafa8f9de547e83604051610d489190611c81565b60405180910390a35b50505050505050565b610d62611757565b60015b6003548111610dd75760008181526004602052604090206006015460ff168015610da65750600081815260046020526040902060060154610100900460ff16155b15610dc5576000818152600460205260409020600601805460ff191690555b80610dcf81611c68565b915050610d65565b50565b610de2611757565b610dec60006117fd565b565b610df661184d565b600081815260046020526040812054829103610e4b5760405162461bcd60e51b8152602060048201526014602482015273141c9bdbd988191bd95cc81b9bdd08195e1a5cdd60621b6044820152606401610797565b6000828152600460205260409020600681015460ff16610ead5760405162461bcd60e51b815260206004820152601d60248201527f50726f6f66206d7573742062652076616c6964617465642066697273740000006044820152606401610797565b6006810154610100900460ff1615610f075760405162461bcd60e51b815260206004820152601a60248201527f52657761726420616c72656164792064697374726962757465640000000000006044820152606401610797565b6000816007015411610f5b5760405162461bcd60e51b815260206004820152601760248201527f4e6f2072657761726420746f20646973747269627574650000000000000000006044820152606401610797565b6002546001820154600783015460405163a9059cbb60e01b81526001600160a01b039283166004820152602481019190915291169063a9059cbb906044016020604051808303816000875af1158015610fb8573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610fdc9190611c94565b6110215760405162461bcd60e51b815260206004820152601660248201527514995dd85c99081d1c985b9cd9995c8819985a5b195960521b6044820152606401610797565b60068101805461ff001916610100179055600181015460078201546040516001600160a01b039092169185917fab7542bafced3da2d8c881cb2dd1de859fac7c20d3650d2902ad389a64e088839161107b91815260200190565b60405180910390a35050610dd760018055565b600061109861184d565b60008251116110e95760405162461bcd60e51b815260206004820152601f60248201527f495046532070726f6f6620686173682063616e6e6f7420626520656d707479006044820152606401610797565b600083116111475760405162461bcd60e51b815260206004820152602560248201527f5761746368206475726174696f6e206d75737420626520677265617465722074604482015264068616e20360dc1b6064820152608401610797565b600084815260066020908152604080832033845290915290205460ff16156111c35760405162461bcd60e51b815260206004820152602960248201527f50726f6f6620616c7265616479207375626d697474656420666f7220746869736044820152681031b0b6b830b4b3b760b91b6064820152608401610797565b600084815260056020908152604091829020825160a0810184528154808252600183015493820193909352600282015460ff8082161515958301959095526101009004909316151560608401526003015460808301521561126a57805184101561126a5760405162461bcd60e51b815260206004820152601860248201527715d85d18da08191d5c985d1a5bdb881d1bdbc81cda1bdc9d60421b6044820152606401610797565b6020810151156112c25780602001518411156112c25760405162461bcd60e51b81526020600482015260176024820152765761746368206475726174696f6e20746f6f206c6f6e6760481b6044820152606401610797565b6112d0600380546001019055565b60006112db60035490565b60408051610120810182528281523360208083019182528284018b8152606084018b8152426080860190815260a086018c8152600060c0880181905260e088018190526101008801819052898152600495869052979097208651815594516001860180546001600160a01b0319166001600160a01b0390921691909117905591516002850155516003840155519082015591519293509160058201906113819082611d00565b5060c08201516006828101805460e086015161ffff1990911693151561ff00191693909317610100931515840217905592015160079182015560008881526020928352604080822033808452908552818320805460ff191660019081179091558b845293855281832080549485018155835293822090920180546001600160a01b031916841790559051889184917f10c713ee1fb0193f787278bc11d85253a8ab0e3d53ddc4c0ffb03e9082db3ce19190a491505061143f60018055565b9392505050565b61144e611757565b6040805160a0810182528681526020808201878152861515838501908152861515606085019081526080850187815260008d8152600590955286852095518655925160018601559051600285018054925115156101000261ff00199215159290921661ffff199093169290921717905551600390920191909155905187917f5934b5d46280b73f2218e6ab22013dea015fabccd70d6d800b1eccc4f55b73f891a2505050505050565b600061150260035490565b905090565b600460208190526000918252604090912080546001820154600283015460038401549484015460058501805494966001600160a01b0390941695929491929161154f90611c18565b80601f016020809104026020016040519081016040528092919081815260200182805461157b90611c18565b80156115c85780601f1061159d576101008083540402835291602001916115c8565b820191906000526020600020905b8154815290600101906020018083116115ab57829003601f168201915b505050506006830154600790930154919260ff8082169361010090920416915089565b60008281526006602090815260408083206001600160a01b038516845290915290205460ff165b92915050565b61164e6040518060a001604052806000815260200160008152602001600015158152602001600015158152602001600081525090565b50600090815260056020908152604091829020825160a08101845281548152600182015492810192909252600281015460ff808216151594840194909452610100900490921615156060820152600390910154608082015290565b600760205281600052604060002081815481106116c557600080fd5b6000918252602090912001546001600160a01b03169150829050565b6116e9611757565b6001600160a01b03811661174e5760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b6064820152608401610797565b610dd7816117fd565b6000546001600160a01b03163314610dec5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401610797565b600068056bc75e2d63100000600a61012c8511156117d1575060146117de565b60b48511156117de5750600f5b600a6117ea8284611dc0565b6117f49190611dd7565b95945050505050565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b60026001540361189f5760405162461bcd60e51b815260206004820152601f60248201527f5265656e7472616e637947756172643a207265656e7472616e742063616c6c006044820152606401610797565b6002600155565b6000602082840312156118b857600080fd5b5035919050565b6000815180845260005b818110156118e5576020818501810151868301820152016118c9565b506000602082860101526020601f19601f83011685010191505092915050565b60208152815160208201526000602083015161192c60408401826001600160a01b03169052565b506040830151606083015260608301516080830152608083015160a083015260a08301516101208060c08501526119676101408501836118bf565b915060c085015161197c60e086018215159052565b5060e08501516101006119928187018315159052565b959095015193019290925250919050565b80356001600160a01b03811681146119ba57600080fd5b919050565b600080604083850312156119d257600080fd5b823591506119e2602084016119a3565b90509250929050565b6020808252825182820181905260009190848201906040850190845b81811015611a2c5783516001600160a01b031683529284019291840191600101611a07565b50909695505050505050565b600060208284031215611a4a57600080fd5b61143f826119a3565b634e487b7160e01b600052604160045260246000fd5b600080600060608486031215611a7e57600080fd5b8335925060208401359150604084013567ffffffffffffffff80821115611aa457600080fd5b818601915086601f830112611ab857600080fd5b813581811115611aca57611aca611a53565b604051601f8201601f19908116603f01168101908382118183101715611af257611af2611a53565b81604052828152896020848701011115611b0b57600080fd5b8260208601602083013760006020848301015280955050505050509250925092565b8015158114610dd757600080fd5b60008060008060008060c08789031215611b5457600080fd5b8635955060208701359450604087013593506060870135611b7481611b2d565b92506080870135611b8481611b2d565b8092505060a087013590509295509295509295565b60006101208b835260018060a01b038b1660208401528960408401528860608401528760808401528060a0840152611bd3818401886118bf565b95151560c0840152505091151560e0830152610100909101529695505050505050565b60008060408385031215611c0957600080fd5b50508035926020909101359150565b600181811c90821680611c2c57607f821691505b602082108103611c4c57634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052601160045260246000fd5b600060018201611c7a57611c7a611c52565b5060010190565b60208152600061143f60208301846118bf565b600060208284031215611ca657600080fd5b815161143f81611b2d565b601f821115611cfb57600081815260208120601f850160051c81016020861015611cd85750805b601f850160051c820191505b81811015611cf757828155600101611ce4565b5050505b505050565b815167ffffffffffffffff811115611d1a57611d1a611a53565b611d2e81611d288454611c18565b84611cb1565b602080601f831160018114611d635760008415611d4b5750858301515b600019600386901b1c1916600185901b178555611cf7565b600085815260208120601f198616915b82811015611d9257888601518255948401946001909101908401611d73565b5085821015611db05787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b808202811582820484141761161257611612611c52565b600082611df457634e487b7160e01b600052601260045260246000fd5b50049056fea2646970667358221220a7dd91854205824de67298036d452f5e545c4b84751eee590c5782e9b06dcb4a64736f6c63430008110033",
+  "devdoc": {
+    "details": "Handles verification and validation of user attention to advertisements",
+    "kind": "dev",
+    "methods": {
+      "addValidator(address)": {
+        "details": "Add a new validator"
+      },
+      "distributeReward(uint256)": {
+        "details": "Distribute rewards for validated proofs"
+      },
+      "emergencyPause()": {
+        "details": "Emergency pause for all validations (only owner)"
+      },
+      "getCampaignProofs(uint256)": {
+        "details": "Get campaign proofs"
+      },
+      "getProof(uint256)": {
+        "details": "Get proof details"
+      },
+      "getProofValidationCount(uint256)": {
+        "details": "Get proof validation count"
+      },
+      "getTotalProofs()": {
+        "details": "Get total proofs count"
+      },
+      "getValidationCriteria(uint256)": {
+        "details": "Get validation criteria for a campaign"
+      },
+      "hasUserSubmittedProof(uint256,address)": {
+        "details": "Check if user has submitted proof for campaign"
+      },
+      "isProofValidatedBy(uint256,address)": {
+        "details": "Check if proof is validated by specific validator"
+      },
+      "isValidator(address)": {
+        "details": "Check if address is validator"
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "removeValidator(address)": {
+        "details": "Remove a validator"
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "setValidationCriteria(uint256,uint256,uint256,bool,bool,uint256)": {
+        "details": "Set validation criteria for a campaign"
+      },
+      "submitProof(uint256,uint256,string)": {
+        "details": "Submit proof of attention for a campaign"
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      },
+      "updateValidationThreshold(uint256)": {
+        "details": "Update validation threshold"
+      },
+      "validateProof(uint256)": {
+        "details": "Validate a proof of attention (only validators)"
+      }
+    },
+    "title": "ProofOfAttention",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 7,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 123,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "_status",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 2307,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "attendaToken",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_contract(AttendaToken)1078"
+      },
+      {
+        "astId": 2340,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "_proofIds",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_struct(Counter)895_storage"
+      },
+      {
+        "astId": 2345,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "proofs",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_uint256,t_struct(AttentionProof)2326_storage)"
+      },
+      {
+        "astId": 2350,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "campaignValidationCriteria",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_uint256,t_struct(ValidationCriteria)2337_storage)"
+      },
+      {
+        "astId": 2356,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "userProofSubmitted",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_uint256,t_mapping(t_address,t_bool))"
+      },
+      {
+        "astId": 2361,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "campaignProofs",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_uint256,t_array(t_address)dyn_storage)"
+      },
+      {
+        "astId": 2364,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "validationThreshold",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 2368,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "validators",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 2374,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "proofValidations",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_mapping(t_uint256,t_mapping(t_address,t_bool))"
+      },
+      {
+        "astId": 2378,
+        "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+        "label": "proofValidationCount",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_mapping(t_uint256,t_uint256)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_contract(AttendaToken)1078": {
+        "encoding": "inplace",
+        "label": "contract AttendaToken",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_uint256,t_array(t_address)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => address[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_address)dyn_storage"
+      },
+      "t_mapping(t_uint256,t_mapping(t_address,t_bool))": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => mapping(address => bool))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_bool)"
+      },
+      "t_mapping(t_uint256,t_struct(AttentionProof)2326_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct ProofOfAttention.AttentionProof)",
+        "numberOfBytes": "32",
+        "value": "t_struct(AttentionProof)2326_storage"
+      },
+      "t_mapping(t_uint256,t_struct(ValidationCriteria)2337_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct ProofOfAttention.ValidationCriteria)",
+        "numberOfBytes": "32",
+        "value": "t_struct(ValidationCriteria)2337_storage"
+      },
+      "t_mapping(t_uint256,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(AttentionProof)2326_storage": {
+        "encoding": "inplace",
+        "label": "struct ProofOfAttention.AttentionProof",
+        "members": [
+          {
+            "astId": 2309,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "id",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2311,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "user",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 2313,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "campaignId",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2315,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "watchDuration",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2317,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "timestamp",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2319,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "ipfsProofHash",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2321,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "isValidated",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_bool"
+          },
+          {
+            "astId": 2323,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "isRewarded",
+            "offset": 1,
+            "slot": "6",
+            "type": "t_bool"
+          },
+          {
+            "astId": 2325,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "rewardAmount",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "256"
+      },
+      "t_struct(Counter)895_storage": {
+        "encoding": "inplace",
+        "label": "struct Counters.Counter",
+        "members": [
+          {
+            "astId": 894,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "_value",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_struct(ValidationCriteria)2337_storage": {
+        "encoding": "inplace",
+        "label": "struct ProofOfAttention.ValidationCriteria",
+        "members": [
+          {
+            "astId": 2328,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "minWatchDuration",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2330,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "maxWatchDuration",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2332,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "requireInteraction",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool"
+          },
+          {
+            "astId": 2334,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "requireScrollDepth",
+            "offset": 1,
+            "slot": "2",
+            "type": "t_bool"
+          },
+          {
+            "astId": 2336,
+            "contract": "contracts/ProofOfAttention.sol:ProofOfAttention",
+            "label": "minScrollDepth",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
