@@ -29,9 +29,9 @@ const deployCampaignManager: DeployFunction = async function (hre: HardhatRuntim
   console.log("CampaignManager deployed to:", await campaignManager.getAddress());
 
   // Cast to any to access contract methods (type safety handled by contract)
-  const manager = campaignManager as any;
-  console.log("AttendaToken address:", await manager.attendaToken());
-  console.log("Platform fee:", await manager.platformFee());
+  // const manager = campaignManager as any;
+  // console.log("AttendaToken address:", await manager.attendaToken());
+  // console.log("Platform fee:", await manager.platformFee());
 };
 
 export default deployCampaignManager;
